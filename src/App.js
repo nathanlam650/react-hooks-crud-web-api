@@ -12,17 +12,18 @@ function App() {
     <div>
       <nav className="navbar navbar-expand navbar-dark bg-dark">
         <a href="/tutorials" className="navbar-brand">
-          bezKoder
+          VolunteerWeb3
         </a>
+
         <div className="navbar-nav mr-auto">
           <li className="nav-item">
             <Link to={"/tutorials"} className="nav-link">
-              Tutorials
+              Volunteer Jobs
             </Link>
           </li>
           <li className="nav-item">
             <Link to={"/add"} className="nav-link">
-              Add
+              Add New Activities
             </Link>
           </li>
         </div>
