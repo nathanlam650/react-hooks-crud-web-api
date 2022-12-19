@@ -31,10 +31,11 @@ function App() {
 
       <div className="container mt-3">
         <Routes>
-          <Route path="/" element={<TutorialsList/>} />
+          <Route path="/" element={<TutorialsList/>} /> /*mean show all events*/
           <Route path="/tutorials" element={<TutorialsList/>} />
           <Route path="/add" element={<AddTutorial/>} />
           <Route path="/tutorials/:id" element={<Tutorial/>} />
+          <Route path="/tutorials/:id" element={<ViewActivities/>} />
         </Routes>
       </div>
     </div>

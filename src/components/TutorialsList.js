@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import TutorialDataService from "../services/TutorialService";
+import TutorialDataService from "../services/VolunteerService";
 import { Link } from "react-router-dom";
 
 const TutorialsList = () => {
@@ -141,7 +141,7 @@ const TutorialsList = () => {
         ) : (
           <div>
             <br />
-            <p>Please click on a Tutorial...</p>
+            <p>Please click on a Volunteer Job...</p>
           </div>
         )}
       </div>
