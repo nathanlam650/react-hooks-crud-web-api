@@ -6,6 +6,8 @@ import "./App.css";
 import AddTutorial from "./components/AddTutorial";
 import Tutorial from "./components/Tutorial";
 import TutorialsList from "./components/TutorialsList";
+import ViewActivities from "./components/ViewActivities";
+import Register from "./components/Register";
 
 function App() {
   return (
@@ -35,7 +37,8 @@ function App() {
           <Route path="/tutorials" element={<TutorialsList/>} />
           <Route path="/add" element={<AddTutorial/>} />
           <Route path="/tutorials/:id" element={<Tutorial/>} />
-          <Route path="/tutorials/:id" element={<ViewActivities/>} />
+          <Route path="/ViewActivities" element={<ViewActivities/>} />
+          <Route path="/Register" element={<Register/>} />
         </Routes>
       </div>
     </div>
