@@ -8,6 +8,7 @@ import Tutorial from "./components/Tutorial";
 import TutorialsList from "./components/TutorialsList";
 //import ViewActivities from "./components/ViewActivities";
 import Register from "./components/Register";
+import VolunteersList from "./components/VolunteersList";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
           <Route path="/add" element={<AddTutorial/>} />
           <Route path="/tutorials/:id" element={<Tutorial/>} />
           <Route path="/Register" element={<Register/>} />
+          <Route path="/Volunteerslist" element={<VolunteersList/>}/>
         </Routes>
       </div>
     </div>
