@@ -6,7 +6,7 @@ import "./App.css";
 import AddTutorial from "./components/AddTutorial";
 import Tutorial from "./components/Tutorial";
 import TutorialsList from "./components/TutorialsList";
-import ViewActivities from "./components/ViewActivities";
+//import ViewActivities from "./components/ViewActivities";
 import Register from "./components/Register";
 
 function App() {
@@ -42,12 +42,13 @@ function App() {
           <Route path="/tutorials" element={<TutorialsList/>} />
           <Route path="/add" element={<AddTutorial/>} />
           <Route path="/tutorials/:id" element={<Tutorial/>} />
-          <Route path="/ViewActivities" element={<ViewActivities/>} />
           <Route path="/Register" element={<Register/>} />
         </Routes>
       </div>
     </div>
   );
 }
+//<Route path="/ViewActivities" element={<ViewActivities/>} />
+          
 
 export default App;
