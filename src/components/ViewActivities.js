@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
 import VolunteerDataService from "../services/VolunteerService";
 
-const Tutorial = props => {
+const ViewActivities = props => {
   const { id }= useParams();
   let navigate = useNavigate();
 

@@ -12,6 +12,12 @@ const create = data => {
   return http.post("/tutorials", data);
 };
 
+const createVolunteer = data => {
+  return http.post("/volunteers", data);
+};
+
+//router.post("/newuser", volunteers.create);
+
 const update = (id, data) => {
   return http.put(`/tutorials/${id}`, data);
 };
@@ -29,6 +35,7 @@ const findByTitle = title => {
 };
 
 const VolunteerService = {
+  createVolunteer,
   getAll,
   get,
   create,

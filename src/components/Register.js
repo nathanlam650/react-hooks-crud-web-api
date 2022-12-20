@@ -6,12 +6,12 @@ const Register = () => {
 
   const initialUserState = {
     id: null,
-    title: "",
-    description: "",
+    username: "",
+    password: "",
     published: false
   };
   const [volunteer, setVolunteer] = useState(initialUserState);
-  const [submitted, setSubmitted] = useState(false);
+  //const [submitted, setSubmitted] = useState(false);
 
   const handleInputChange = event => {
     const { name, value } = event.target;
@@ -20,25 +20,19 @@ const Register = () => {
     
   const saveVolunteer = () => {
         var data = {
-        title: volunteer.title,
-        description: volunteer.description
+        username: volunteer.username,
+        password: volunteer.password,
+        selfIntroduction: volunteer.selfIntroduction
         };
 
-        VolunteerDataService.create(data)
+        VolunteerDataService.createVolunteer(data)
       .then(response => {
-        setVolunteer({
-        
-          id: response.data.id,
-          title: response.data.title,
-          description: response.data.description,
-          published: response.data.published
-        });
-        setSubmitted(true);
         console.log(response.data);
       })
       .catch(e => {
         console.log(e);
-      });
+        });
+
     };
 
   return (
@@ -46,15 +40,15 @@ const Register = () => {
       
         <div>
           <div className="form-group">
-            <label htmlFor="Username">Username</label>
+            <label htmlFor="username">Username</label>
             <input
               type="text"
               className="form-control"
-              id="Username"
+              id="username"
               required
-              value={volunteer.Username}
+              value={volunteer.username}
               onChange={handleInputChange}
-              name="Username"
+              name="username"
             />
           </div>
 
@@ -68,6 +62,19 @@ const Register = () => {
               value={volunteer.password}
               onChange={handleInputChange}
               name="password"
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="selfIntroduction">self Introduction</label>
+            <input
+              type="text"
+              className="form-control"
+              id="selfIntroduction"
+              required
+              value={volunteer.selfIntroduction}
+              onChange={handleInputChange}
+              name="selfIntroduction"
             />
           </div>
 

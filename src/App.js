@@ -28,12 +28,17 @@ function App() {
               Add New Activities
             </Link>
           </li>
+          <li className="nav-item">
+            <Link to={"/Register"} className="nav-link">
+              New register
+            </Link>
+          </li>          
         </div>
       </nav>
 
       <div className="container mt-3">
         <Routes>
-          <Route path="/" element={<TutorialsList/>} /> /*mean show all events*/
+          <Route path="/" element={<TutorialsList/>} /> //*mean show all events*/
           <Route path="/tutorials" element={<TutorialsList/>} />
           <Route path="/add" element={<AddTutorial/>} />
           <Route path="/tutorials/:id" element={<Tutorial/>} />
