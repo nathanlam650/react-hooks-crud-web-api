@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
-import VolunteerDataService from "../services/VolunteerService";
+import VolunteerDataService from "../services/TutorialService";
 
 const Register = () => {
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
-import TutorialDataService from "../services/VolunteerService";
+import TutorialDataService from "../services/TutorialService";
 
 const Tutorial = props => {
   const { id }= useParams();

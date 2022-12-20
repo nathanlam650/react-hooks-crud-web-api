@@ -12,10 +12,6 @@ const create = data => {
   return http.post("/tutorials", data);
 };
 
-const createVolunteer = data => {
-  return http.post("/volunteers", data);
-};
-
 //router.post("/newuser", volunteers.create);
 
 const update = (id, data) => {
@@ -34,7 +30,14 @@ const findByTitle = title => {
   return http.get(`/tutorials?title=${title}`);
 };
 
-const VolunteerService = {
+
+
+const createVolunteer = data => {
+  return http.post("/volunteers", data);
+};
+
+
+const TutorialService = {
   createVolunteer,
   getAll,
   get,
@@ -45,4 +48,4 @@ const VolunteerService = {
   findByTitle
 };
 
-export default VolunteerService;
+export default TutorialService;
