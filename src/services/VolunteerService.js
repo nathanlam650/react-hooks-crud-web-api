@@ -1,33 +1,33 @@
 import http from "../http-common";
 
 const getAll = () => {
-  return http.get("/tutorials");
+  return http.get("/volunteers");
 };
 
 const get = id => {
-  return http.get(`/tutorials/${id}`);
+  return http.get(`/volunteers/${id}`);
 };
 
 const create = data => {
-  return http.post("/tutorials", data);
+  return http.post("/volunteers", data);
 };
 
 //router.post("/newuser", volunteers.create);
 
 const update = (id, data) => {
-  return http.put(`/tutorials/${id}`, data);
+  return http.put(`/volunteers/${id}`, data);
 };
 
 const remove = id => {
-  return http.delete(`/tutorials/${id}`);
+  return http.delete(`/volunteers/${id}`);
 };
 
 const removeAll = () => {
-  return http.delete(`/tutorials`);
+  return http.delete(`/volunteers`);
 };
 
 const findByTitle = title => {
-  return http.get(`/tutorials?title=${title}`);
+  return http.get(`/volunteers?title=${title}`);
 };
 
 
@@ -37,7 +37,7 @@ const createVolunteer = data => {
 };
 
 
-const TutorialService = {
+const VolunteersService = {
   createVolunteer,
   getAll,
   get,
@@ -48,4 +48,4 @@ const TutorialService = {
   findByTitle
 };
 
-export default TutorialService;
+export default olunteerService;
