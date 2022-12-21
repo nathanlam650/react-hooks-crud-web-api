@@ -45,7 +45,7 @@ const VolunteersService = {
   update,
   remove,
   removeAll,
-  findByTitle
+  findByUsername: findByTitle
 };
 
-export default olunteerService;
+export default VolunteersService;
