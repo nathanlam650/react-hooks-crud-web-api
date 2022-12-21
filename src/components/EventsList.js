@@ -1,26 +1,26 @@
 import React, { useState, useEffect } from "react";
-import VolunteerDataService from "../services/VolunteerService";
+import DataService from "../services/EventService";
 import { Link } from "react-router-dom";
 
-const VolunteersList = () => {
-  const [volunteers, setVolunteers] = useState([]);
-  const [currentVolunteer, setCurrentVolunteer] = useState(null);
+const EventList = () => {
+  const [events, setEvents] = useState([]);
+  const [currentEvent, setCurrentEvent] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(-1);
-  const [searchUsername, setSearchUsername] = useState("");
+  const [searchEventname, setSearchEventname] = useState("");
 
   useEffect(() => {
-    retrieveVolunteers();
+    retrieveEvents();
   }, []);
 
-  const onChangeSearchUsername = e => {
-    const searchUsername = e.target.value;
-    setSearchUsername(searchUsername);
+  const onChangeSearchEventname = e => {
+    const searchEventname = e.target.value;
+    setSearchEventname(searchEventname);
   };
 
-  const retrieveVolunteers = () => {
-    VolunteerDataService.getAll()
+  const retrieveEvents = () => {
+    DataService.getAll()
       .then(response => {
-        setVolunteers(response.data);
+        setEvents(response.data);
         console.log(response.data);
       })
       .catch(e => {
@@ -29,18 +29,18 @@ const VolunteersList = () => {
   };
 
   const refreshList = () => {
-    retrieveVolunteers();
-    setCurrentVolunteer(null);
+    retrieveEvents();
+    setCurrentEvent(null);
     setCurrentIndex(-1);
   };
 
-  const setActiveVolunteer = (volunteer, index) => {
-    setCurrentVolunteer(volunteer);
+  const setActiveEvent = (event, index) => {
+    setCurrentEvent(event);
     setCurrentIndex(index);
   };
 
-  const removeAllVolunteers = () => {
-    VolunteerDataService.removeAll()
+  const removeAllEvents = () => {
+    DataService.removeAll()
       .then(response => {
         console.log(response.data);
         refreshList();
@@ -50,10 +50,10 @@ const VolunteersList = () => {
       });
   };
 
-  const findByUsername = () => {
-    VolunteerDataService.findByUsername(searchUsername)
+  const findByEventname = () => {
+    DataService.findByID(searchEventname)
       .then(response => {
-        setVolunteers(response.data);
+        setEvents(response.data);
         console.log(response.data);
       })
       .catch(e => {
@@ -69,14 +69,14 @@ const VolunteersList = () => {
             type="text"
             className="form-control"
             placeholder="Search by Username"
-            value={searchUsername}
-            onChange={onChangeSearchUsername}
+            value={searchEventname}
+            onChange={onChangeSearchEventname}
           />
           <div className="input-group-append">
             <button
               className="btn btn-outline-secondary"
               type="button"
-              onClick={findByUsername}
+              onClick={findByEventname}
             >
               Search
             </button>
@@ -84,55 +84,55 @@ const VolunteersList = () => {
         </div>
       </div>
       <div className="col-md-6">
-        <h4>Volunteers List</h4>
+        <h4>Event List</h4>
 
         <ul className="list-group">
-          {volunteers &&
-            volunteers.map((volunteer, index) => (
+          {events &&
+            events.map((event, index) => (
               <li
                 className={
                   "list-group-item " + (index === currentIndex ? "active" : "")
                 }
-                onClick={() => setActiveVolunteer(volunteer, index)}
+                onClick={() => setActiveEvent(event, index)}
                 key={index}
               >
-                {volunteer.username}
+                {event.username}
               </li>
             ))}
         </ul>
 
         <button
           className="m-3 btn btn-sm btn-danger"
-          onClick={removeAllVolunteers}
+          onClick={removeAllEvents}
         >
           Remove All
         </button>
       </div>
       <div className="col-md-6">
-        {currentVolunteer ? (
+        {currentEvent ? (
           <div>
-            <h4>Volunteer</h4>
+            <h4>Event</h4>
             <div>
               <label>
                 <strong>Username:</strong>
               </label>{" "}
-              {currentVolunteer.username}
+              {currentEvent.username}
             </div>
             <div>
               <label>
                 <strong>Description:</strong>
               </label>{" "}
-              {currentVolunteer.description}
+              {currentEvent.description}
             </div>
             <div>
               <label>
                 <strong>Status:</strong>
               </label>{" "}
-              {currentVolunteer.published ? "Published" : "Pending"}
+              {currentEvent.published ? "Published" : "Pending"}
             </div>
 
             <Link
-              to={"/Volunteers/" + currentVolunteer.id}
+              to={"/Events/" + currentEvent.id}
               className="badge badge-warning"
             >
               Edit
@@ -141,7 +141,7 @@ const VolunteersList = () => {
         ) : (
           <div>
             <br />
-            <p>Please click on a Volunteer Job...</p>
+            <p>Please click on a Event...</p>
           </div>
         )}
       </div>
@@ -149,4 +149,4 @@ const VolunteersList = () => {
   );
 };
 
-export default VolunteersList;
+export default EventList;
