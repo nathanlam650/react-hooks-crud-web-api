@@ -6,6 +6,8 @@ const AddEvent = () => {
     id: null,
     title: "",
     description: "",
+    time: "",
+    place: "",
     published: false
   };
   const [event, setEvent] = useState(initialEventState);
@@ -79,6 +81,33 @@ const AddEvent = () => {
               name="description"
             />
           </div>
+
+          <div className="form-group">
+            <label htmlFor="time">Time</label>
+            <input
+              type="text"
+              className="form-control"
+              id="time"
+              required
+              value={event.time}
+              onChange={handleInputChange}
+              name="time"
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="place">place</label>
+            <input
+              type="text"
+              className="form-control"
+              id="place"
+              required
+              value={event.place}
+              onChange={handleInputChange}
+              name="place"
+            />
+          </div>
+
 
           <button onClick={saveEvent} className="btn btn-success">
             Submit
