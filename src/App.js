@@ -9,6 +9,9 @@ import TutorialsList from "./components/TutorialsList";
 //import ViewActivities from "./components/ViewActivities";
 import Register from "./components/Register";
 import VolunteersList from "./components/VolunteersList";
+import AddEvent from "./components/AddEvent";
+import EventList from "./components/EventsList";
+
 
 function App() {
   return (
@@ -33,7 +36,20 @@ function App() {
             <Link to={"/Register"} className="nav-link">
               New register
             </Link>
-          </li>          
+          </li>
+
+          <li className="nav-item">
+            <Link to={"/addevent"} className="nav-link">
+              New event
+            </Link>
+          </li>
+
+          <li className="nav-item">
+            <Link to={"/Eventslist"} className="nav-link">
+            Eventslist
+            </Link>
+          </li>
+                    
         </div>
       </nav>
 
@@ -45,6 +61,9 @@ function App() {
           <Route path="/tutorials/:id" element={<Tutorial/>} />
           <Route path="/Register" element={<Register/>} />
           <Route path="/Volunteerslist" element={<VolunteersList/>}/>
+          <Route path="/addevent" element={<AddEvent/>}/>
+          <Route path="/Eventslist" element={<EventList/>}/>
+          
         </Routes>
       </div>
     </div>

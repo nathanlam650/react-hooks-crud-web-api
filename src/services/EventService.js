@@ -30,20 +30,14 @@ const findByID = title => {
 
 
 
-const createVolunteer = data => {
-  return http.post("/events", data);
-};
-
-
 const EventsService = {
-  createVolunteer,
   getAll,
   get,
   create,
   update,
   remove,
   removeAll,
-  findByUsername: findByTitle
+  findByID,
 };
 
 export default EventsService;

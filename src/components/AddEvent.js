@@ -10,18 +10,21 @@ const AddEvent = () => {
     place: "",
     published: false
   };
-  const [event, setEvent] = useState(initialEventState);
+  const [eventhook, setEvent] = useState(initialEventState);
   const [submitted, setSubmitted] = useState(false);
 
   const handleInputChange = event => {
     const { name, value } = event.target;
-    setEvent({ ...event, [name]: value });
+    setEvent({ ...eventhook, [name]: value });
   };
+
 
   const saveEvent = () => {
     var data = {
-      title: event.title,
-      description: event.description
+      title: eventhook.title,
+      description: eventhook.description,
+      place: eventhook.place,
+      time: eventhook.time
     };
 
     DataService.create(data)
@@ -63,7 +66,7 @@ const AddEvent = () => {
               className="form-control"
               id="title"
               required
-              value={event.title}
+              value={eventhook.title}
               onChange={handleInputChange}
               name="title"
             />
@@ -76,7 +79,7 @@ const AddEvent = () => {
               className="form-control"
               id="description"
               required
-              value={event.description}
+              value={eventhook.description}
               onChange={handleInputChange}
               name="description"
             />
@@ -89,7 +92,7 @@ const AddEvent = () => {
               className="form-control"
               id="time"
               required
-              value={event.time}
+              value={eventhook.time}
               onChange={handleInputChange}
               name="time"
             />
@@ -102,7 +105,7 @@ const AddEvent = () => {
               className="form-control"
               id="place"
               required
-              value={event.place}
+              value={eventhook.place}
               onChange={handleInputChange}
               name="place"
             />
