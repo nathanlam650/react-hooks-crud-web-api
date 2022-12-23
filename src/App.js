@@ -11,7 +11,8 @@ import Register from "./components/Register";
 import VolunteersList from "./components/VolunteersList";
 import AddEvent from "./components/AddEvent";
 import EventList from "./components/EventsList";
-
+import OrganizationList from "./components/OrganizationList";
+import AddOrganization from "./components/AddOrganization";
 
 function App() {
   return (
@@ -50,6 +51,17 @@ function App() {
             </Link>
           </li>
                     
+          <li className="nav-item">
+            <Link to={"/Organizationlist"} className="nav-link">
+            Organizationlist
+            </Link>
+          </li>
+
+          <li className="nav-item">
+            <Link to={"/addorganization"} className="nav-link">
+            addorganization
+            </Link>
+          </li>
         </div>
       </nav>
 
@@ -63,6 +75,8 @@ function App() {
           <Route path="/Volunteerslist" element={<VolunteersList/>}/>
           <Route path="/addevent" element={<AddEvent/>}/>
           <Route path="/Eventslist" element={<EventList/>}/>
+          <Route path="/Organizationlist" element={<OrganizationList/>}/>
+          <Route path="/addorganization" element={<AddOrganization/>}/>
           
         </Routes>
       </div>
