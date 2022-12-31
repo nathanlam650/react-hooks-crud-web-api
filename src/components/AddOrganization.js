@@ -1,35 +1,33 @@
 import React, { useState } from "react";
-import DataService from "../services/EventService";
+import DataService from "../services/OrganizationService";
 
 const AddOrganization = () => {
-  const initialEventState = {
+  const initialOrganizationState = {
     id: null,
-    title: "",
+    username: "",
+    password:"",
     description: "",
-    time: "",
-    place: "",
     published: false
   };
-  const [eventhook, setEvent] = useState(initialEventState);
+  const [organization, setOrganization] = useState(initialOrganizationState);
   const [submitted, setSubmitted] = useState(false);
 
   const handleInputChange = event => {
     const { name, value } = event.target;
-    setEvent({ ...eventhook, [name]: value });
+    setOrganization({ ...organization, [name]: value });
   };
 
 
   const saveEvent = () => {
     var data = {
-      title: eventhook.title,
-      description: eventhook.description,
-      place: eventhook.place,
-      time: eventhook.time
+      username: organization.username,
+      description: organization.description,
+      password: organization.password
     };
 
     DataService.create(data)
       .then(response => {
-        setEvent({
+        setOrganization({
           id: response.data.id,
           title: response.data.title,
           description: response.data.description,
@@ -44,7 +42,7 @@ const AddOrganization = () => {
   };
 
   const newEvent = () => {
-    setEvent(initialEventState);
+    setOrganization(initialOrganizationState);
     setSubmitted(false);
   };
 
@@ -60,15 +58,15 @@ const AddOrganization = () => {
       ) : (
         <div>
           <div className="form-group">
-            <label htmlFor="title">Title</label>
+            <label htmlFor="username">username</label>
             <input
               type="text"
               className="form-control"
-              id="title"
+              id="username"
               required
-              value={eventhook.title}
+              value={organization.username}
               onChange={handleInputChange}
-              name="title"
+              name="username"
             />
           </div>
 
@@ -79,35 +77,22 @@ const AddOrganization = () => {
               className="form-control"
               id="description"
               required
-              value={eventhook.description}
+              value={organization.description}
               onChange={handleInputChange}
               name="description"
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="time">Time</label>
+            <label htmlFor="password">password</label>
             <input
               type="text"
               className="form-control"
-              id="time"
+              id="password"
               required
-              value={eventhook.time}
+              value={organization.password}
               onChange={handleInputChange}
-              name="time"
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="place">place</label>
-            <input
-              type="text"
-              className="form-control"
-              id="place"
-              required
-              value={eventhook.place}
-              onChange={handleInputChange}
-              name="place"
+              name="password"
             />
           </div>
 

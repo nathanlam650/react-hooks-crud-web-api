@@ -9,7 +9,7 @@ const OrganizationList = () => {
   const [searchOrganizationname, setSearchOrganizationname] = useState("");
 
   useEffect(() => {
-    retrieveOrganizations();
+    retrieveOrganization();
   }, []);
 
   const onChangeSearchOrganizationname = e => {
@@ -17,7 +17,7 @@ const OrganizationList = () => {
     setSearchOrganizationname(searchOrganizationname);
   };
 
-  const retrieveOrganizations = () => {
+  const retrieveOrganization = () => {
     DataService.getAll()
       .then(response => {
         setOrganizations(response.data);
@@ -29,13 +29,13 @@ const OrganizationList = () => {
   };
 
   const refreshList = () => {
-    retrieveOrganizations();
+    retrieveOrganization();
     setCurrentOrganization(null);
     setCurrentIndex(-1);
   };
 
-  const setActiveEvent = (event, index) => {
-    setCurrentOrganization(event);
+  const setActiveOrganization = (organization, index) => {
+    setCurrentOrganization(organization);
     setCurrentIndex(index);
   };
 
@@ -88,15 +88,15 @@ const OrganizationList = () => {
 
         <ul className="list-group">
           {organizations &&
-            organizations.map((event, index) => (
+            organizations.map((organization, index) => (
               <li
                 className={
                   "list-group-item " + (index === currentIndex ? "active" : "")
                 }
-                onClick={() => setActiveEvent(event, index)}
+                onClick={() => setActiveOrganization(organization, index)}
                 key={index}
               >
-                {Organization.username}
+                {organization.username}
               </li>
             ))}
         </ul>
