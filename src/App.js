@@ -77,6 +77,7 @@ function App() {
           <Route path="/Eventslist" element={<EventList/>}/>
           <Route path="/Organizationlist" element={<OrganizationList/>}/>
           <Route path="/addorganization" element={<AddOrganization/>}/>
+          <Route path="/addorganization" element={<AddOrganization/>}/>
           
         </Routes>
       </div>
