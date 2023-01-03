@@ -13,6 +13,15 @@ import AddEvent from "./components/AddEvent";
 import EventList from "./components/EventsList";
 import OrganizationList from "./components/OrganizationList";
 import AddOrganization from "./components/AddOrganization";
+import MetamaskSDKApp from "./components/MetamaskSDKApp";
+//import MetaMaskSDK from "@metamask/sdk";
+
+
+//const MMSDK = new MetaMaskSDK(eth_requestAccounts);
+
+//const ethereum = MMSDK.getProvider(); // You can also access via window.ethereum
+
+//ethereum.request({ method: 'eth_requestAccounts', params: [] });
 
 function App() {
   return (
@@ -77,8 +86,9 @@ function App() {
           <Route path="/Eventslist" element={<EventList/>}/>
           <Route path="/Organizationlist" element={<OrganizationList/>}/>
           <Route path="/addorganization" element={<AddOrganization/>}/>
-          <Route path="/addorganization" element={<AddOrganization/>}/>
+          <Route path="/MetamaskSDKApp" element={<MetamaskSDKApp/>}/>
           
+
         </Routes>
       </div>
     </div>
