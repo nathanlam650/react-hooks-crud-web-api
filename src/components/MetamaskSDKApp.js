@@ -1,4 +1,4 @@
-import "./App.css";
+//import "./App.css";
 import MetaMaskSDK from "@metamask/sdk";
 import { useState, useEffect } from "react";
 
@@ -13,11 +13,12 @@ function MetamaskSDKApp() {
   const [response, setResponse] = useState("");
 
   const connect = () => {
-    window.ethereum
-      .request({
+    window.ethereum.request({
         method: "eth_requestAccounts",
         params: [],
       })
+
+
       .then((res) => console.log("request accounts", res))
       .catch((e) => console.log("request accounts ERR", e));
   };

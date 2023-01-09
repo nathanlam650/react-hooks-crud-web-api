@@ -71,6 +71,13 @@ function App() {
             addorganization
             </Link>
           </li>
+
+          <li className="nav-item">
+            <Link to={"/MetamaskSDKApp"} className="nav-link">
+            MetamaskSDKApp
+            </Link>
+          </li>
+          
         </div>
       </nav>
 
