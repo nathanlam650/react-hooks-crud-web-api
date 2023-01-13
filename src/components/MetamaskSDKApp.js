@@ -1,11 +1,21 @@
 //import "./App.css";
 import MetaMaskSDK from "@metamask/sdk";
+
 import { useState, useEffect } from "react";
+
+<script src="https://cdn.ethers.io/lib/ethers-5.0.umd.min.js" type="text/javascript">
+</script>
 
 new MetaMaskSDK({
   useDeeplink: false,
   communicationLayerPreference: "socket",
 });
+
+/*
+ethereumButton.addEventListener('click', () => {
+  ethereum.request({ method: 'eth_requestAccounts' });
+});
+*/
 
 function MetamaskSDKApp() {
   const [chain, setChain] = useState("");
@@ -13,11 +23,13 @@ function MetamaskSDKApp() {
   const [response, setResponse] = useState("");
 
   const connect = () => {
-    window.ethereum.request({
+    //ethereum.request(args: RequestArguments): Promise<unknown>;
+    
+    window.ethereum.request(
+      {
         method: "eth_requestAccounts",
-        params: [],
+        params: [{ eth_accounts: {} }],
       })
-
 
       .then((res) => console.log("request accounts", res))
       .catch((e) => console.log("request accounts ERR", e));
@@ -50,6 +62,13 @@ function MetamaskSDKApp() {
       console.log(accounts);
       setAccount(accounts?.[0]);
     });
+
+    /*
+    const ethereumButton = document.querySelector(".enableEthereumButton");
+    ethereumButton.addEventListener('click', () => {
+      window.ethereum.request({ method: 'eth_requestAccounts' });
+    });
+    */
   }, []);
 
   const sendTransaction = async () => {
@@ -160,7 +179,7 @@ function MetamaskSDKApp() {
   return (
     <div className="App">
       <header className="App-header">
-        <button style={{ padding: 10, margin: 10 }} onClick={connect}>
+        <button style={{ padding: 10, margin: 10 } } onClick={connect} >
           {account ? "Connected" : "Connect"}
         </button>
 
@@ -187,3 +206,38 @@ function MetamaskSDKApp() {
 }
 
 export default MetamaskSDKApp;
+
+
+/**
+ * [HMR] Waiting for update signal from WDS...
+react_devtools_backend.js:4012 src/App.js
+  Line 86:56:  Comments inside children section of tag should be placed inside braces  react/jsx-no-comment-textnodes
+overrideMethod @ react_devtools_backend.js:4012
+printWarnings @ webpackHotDevClient.js:138
+handleWarnings @ webpackHotDevClient.js:143
+push../node_modules/react-dev-utils/webpackHotDevClient.js.connection.onmessage @ webpackHotDevClient.js:210
+2MetamaskSDKApp.js:18 request accounts ERR Error: Not connected
+    at <anonymous>:1:4417
+VM81:1 Uncaught (in promise) {message: 'Not connected', code: 4900}
+(anonymous) @ VM81:1
+postMessage (async)
+(anonymous) @ inject.js:10
+ethereum.request({
+        method: "eth_requestAccounts",
+        params: [{ eth_accounts: {} }],
+      })
+Promise {<pending>}[[Prototype]]: Promisecatch: ƒ catch()length: 1name: "catch"arguments: (...)caller: (...)[[Prototype]]: ƒ ()constructor: ƒ Promise()finally: ƒ finally()then: ƒ then()Symbol(Symbol.toStringTag): "Promise"[[Prototype]]: Object[[PromiseState]]: "pending"[[PromiseResult]]: undefined
+VM81:1 Uncaught (in promise) Error: Not connected
+    at <anonymous>:1:4417
+(anonymous) @ VM81:1
+setTimeout (async)
+(anonymous) @ VM81:1
+doSend @ VM81:1
+doSend @ VM81:1
+request @ VM81:1
+(anonymous) @ VM135:1
+VM81:1 Uncaught (in promise) {message: 'Not connected', code: 4900}
+(anonymous) @ VM81:1
+postMessage (async)
+(anonymous) @ inject.js:10
+ */
