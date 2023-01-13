@@ -112,7 +112,7 @@ function MetamaskSDKApp() {
          - This is DApp Specific
          - Be as explicit as possible when building out the message schema.
         */
-        contents: "Hello, Bob!",
+        contents: "register as volunteer",
         attachedMoneyInEth: 4.2,
         from: {
           name: "Cow",

@@ -49,15 +49,19 @@ const Register = () => {
 
       .then((res) => {
         console.log("request accounts", res);
-        setAccount(window.ethereum.selectedAddress);
         
+        setAccount(window.ethereum.selectedAddress);
+        //setVolunteer({... volunteer, ["ETHaccountid"]: window.ethereum.selectedAddress});
+        //console.log("t1",volunteer, account,window.ethereum.selectedAddress)
+      
       })
       .catch((e) => console.log("request accounts ERR", e));
-
-      setVolunteer({...volunteer, ["ETHaccountid"]: account});
-
-      console.log(volunteer, account)
-  };
+      
+      //setAccount(window.ethereum.selectedAddress);
+      //setVolunteer({... volunteer, ["ETHaccountid"]: window.ethereum.selectedAddress});
+      //console.log("t2",volunteer, account,window.ethereum.selectedAddress)
+        
+    };
 
   const handleInputChange = event => {
     const { name, value } = event.target;
