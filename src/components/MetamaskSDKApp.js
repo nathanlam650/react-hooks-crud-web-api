@@ -3,8 +3,6 @@ import MetaMaskSDK from "@metamask/sdk";
 
 import { useState, useEffect } from "react";
 
-<script src="https://cdn.ethers.io/lib/ethers-5.0.umd.min.js" type="text/javascript">
-</script>
 
 new MetaMaskSDK({
   useDeeplink: false,
