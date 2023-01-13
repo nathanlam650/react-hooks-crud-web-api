@@ -15,41 +15,6 @@ const Register = () => {
   const [account, setAccount] = useState("");
   const [response, setResponse] = useState("");
 
-  const connect = () => {
-    //ethereum.request(args: RequestArguments): Promise<unknown>;
-    
-    window.ethereum.request(
-      {
-        method: "eth_requestAccounts",
-        params: [{ eth_accounts: {} }],
-      })
-
-      .then((res) => {console.log("request accounts", res);
-      setAccount(window.ethereum.selectedAddress);
-      setVolunteer({ ...volunteer, ETHaccountid: account });})
-      .catch((e) => console.log("request accounts ERR", e));
-
-    
-  };
-
-  const addEthereumChain = () => {
-    window.ethereum
-      .request({
-        method: "wallet_addEthereumChain",
-        params: [
-          {
-            chainId: "0x89",
-            chainName: "Polygon",
-            blockExplorerUrls: ["https://polygonscan.com"],
-            nativeCurrency: { symbol: "MATIC", decimals: 18 },
-            rpcUrls: ["https://polygon-rpc.com/"],
-          },
-        ],
-      })
-      .then((res) => console.log("add", res))
-      .catch((e) => console.log("ADD ERR", e));
-  };
-
   useEffect(() => {
     window.ethereum.on("chainChanged", (chain) => {
       console.log(chain);
@@ -66,11 +31,33 @@ const Register = () => {
     id: null,
     username: "",
     password: "",
+    selfIntroduction:"",
     published: false,
     ETHaccountid: ""
   };
   const [volunteer, setVolunteer] = useState(initialUserState);
   //const [submitted, setSubmitted] = useState(false);
+
+  const connect = () => {
+    //ethereum.request(args: RequestArguments): Promise<unknown>;
+    
+    window.ethereum.request(
+      {
+        method: "eth_requestAccounts",
+        params: [{ eth_accounts: {} }],
+      })
+
+      .then((res) => {
+        console.log("request accounts", res);
+        setAccount(window.ethereum.selectedAddress);
+        
+      })
+      .catch((e) => console.log("request accounts ERR", e));
+
+      setVolunteer({...volunteer, ["ETHaccountid"]: account});
+
+      console.log(volunteer, account)
+  };
 
   const handleInputChange = event => {
     const { name, value } = event.target;
@@ -99,6 +86,16 @@ const Register = () => {
   return (
     <div className="submit-form">
       
+
+      <button style={{ padding: 10, margin: 10 } } 
+          onClick={connect}  
+          name="ETHaccountid"
+          id="transfer id"
+          value={account}
+          >
+          {account ? "Connected" : "Connect"}
+      </button>
+
         <div>
           <div className="form-group">
             <label htmlFor="username">Username</label>
@@ -140,10 +137,7 @@ const Register = () => {
           </div>
 
         <header className="metamask-connection">
-        <button style={{ padding: 10, margin: 10 } } 
-          onClick={connect}  >
-          {account ? "Connected" : "Connect"}
-        </button>
+
 
         <button style={{ padding: 10, margin: 10 }} 
           onClick={handleInputChange}
@@ -153,13 +147,6 @@ const Register = () => {
           >
           {"click after connected to metamask"}
         </button>
-
-
-        <button style={{ padding: 10, margin: 10 }} onClick={sign}>
-          Sign
-        </button>
-
-
 
         {chain && `Connected chain: ${chain}`}
         <p></p>
