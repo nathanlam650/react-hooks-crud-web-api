@@ -15,6 +15,7 @@ import OrganizationList from "./components/OrganizationList";
 import AddOrganization from "./components/AddOrganization";
 import MetamaskSDKApp from "./components/MetamaskSDKApp";
 //import MetaMaskSDK from "@metamask/sdk";
+import Addimagetest from "./components/Addimagetest";
 
 
 //const MMSDK = new MetaMaskSDK(eth_requestAccounts);
@@ -83,7 +84,7 @@ function App() {
 
       <div className="container mt-3">
         <Routes>
-          <Route path="/" element={<TutorialsList/>} /> //*mean show all events*/
+          <Route path="/" element={<Register/>} /> //*mean show all events*/
           <Route path="/tutorials" element={<TutorialsList/>} />
           <Route path="/add" element={<AddTutorial/>} />
           <Route path="/tutorials/:id" element={<Tutorial/>} />
@@ -94,7 +95,7 @@ function App() {
           <Route path="/Organizationlist" element={<OrganizationList/>}/>
           <Route path="/addorganization" element={<AddOrganization/>}/>
           <Route path="/MetamaskSDKApp" element={<MetamaskSDKApp/>}/>
-          
+          <Route path="/Addimagetest" element={<Addimagetest/>}/>
 
         </Routes>
       </div>

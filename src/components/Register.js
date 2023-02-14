@@ -51,8 +51,8 @@ const Register = () => {
         console.log("request accounts", res);
         
         setAccount(window.ethereum.selectedAddress);
-        //setVolunteer({... volunteer, ["ETHaccountid"]: window.ethereum.selectedAddress});
-        //console.log("t1",volunteer, account,window.ethereum.selectedAddress)
+        setVolunteer({... volunteer, ["ETHaccountid"]: res[0]});
+        console.log("t1",volunteer, account,window.ethereum.selectedAddress, res[0])
       
       })
       .catch((e) => console.log("request accounts ERR", e));
@@ -63,6 +63,10 @@ const Register = () => {
         
     };
 
+  const showvolunteer = event => {
+    console.log(volunteer)
+  };
+    
   const handleInputChange = event => {
     const { name, value } = event.target;
     setVolunteer({ ...volunteer, [name]: value });
@@ -162,6 +166,11 @@ const Register = () => {
           <button onClick={saveVolunteer} className="btn btn-success">
             Submit
           </button>
+
+          <button onClick={showvolunteer} className="btn btn-success">
+          showvolunteer
+          </button>          
+          
         </div>
       
     </div>

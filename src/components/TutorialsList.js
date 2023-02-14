@@ -84,7 +84,7 @@ const TutorialsList = () => {
         </div>
       </div>
       <div className="col-md-6">
-        <h4>Tutorials List</h4>
+        <h4>Activies List</h4>
 
         <ul className="list-group">
           {tutorials &&

@@ -68,7 +68,7 @@ const EventList = () => {
           <input
             type="text"
             className="form-control"
-            placeholder="Search by Username"
+            placeholder="Search by title"
             value={searchEventname}
             onChange={onChangeSearchEventname}
           />
@@ -96,7 +96,7 @@ const EventList = () => {
                 onClick={() => setActiveEvent(event, index)}
                 key={index}
               >
-                {event.username}
+                {event.title}
               </li>
             ))}
         </ul>
@@ -114,9 +114,9 @@ const EventList = () => {
             <h4>Event</h4>
             <div>
               <label>
-                <strong>Username:</strong>
+                <strong>Title:</strong>
               </label>{" "}
-              {currentEvent.username}
+              {currentEvent.title}
             </div>
             <div>
               <label>
@@ -124,6 +124,21 @@ const EventList = () => {
               </label>{" "}
               {currentEvent.description}
             </div>
+
+            <div>
+              <label>
+                <strong>Time:</strong>
+              </label>{" "}
+              {currentEvent.time}
+            </div>
+
+            <div>
+              <label>
+                <strong>place:</strong>
+              </label>{" "}
+              {currentEvent.place}
+            </div>
+
             <div>
               <label>
                 <strong>Status:</strong>
