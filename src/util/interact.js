@@ -119,7 +119,7 @@ export const mintNFT = async (url, name, description) => {
     to: contractAddress, // Required except during contract publications.
     from: window.ethereum.selectedAddress, // must match user's active address.
     data: window.contract.methods
-      .mintNFT(window.ethereum.selectedAddress, tokenURI)
+      .safeMint(window.ethereum.selectedAddress, tokenURI)
       .encodeABI(),
   };
 
