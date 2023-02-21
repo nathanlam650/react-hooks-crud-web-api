@@ -2,7 +2,7 @@ import { pinJSONToIPFS } from "./pinata.js";
 require("dotenv").config();
 const alchemyKey = process.env.REACT_APP_ALCHEMY_KEY;
 const contractABI = require("../contract-abi.json");
-const contractAddress = "0x4C4a07F737Bf57F6632B6CAB089B78f62385aCaE";
+const contractAddress = "0xd9145CCE52D386f254917e481eB44e9943F39138";
 const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 
 console.log(alchemyKey)
@@ -111,6 +111,7 @@ export const safeMint = async (url, name, description) => {
       status: "😢 Something went wrong while uploading your tokenURI.",
     };
   }
+  //should delete
   const tokenURI = pinataResponse.pinataUrl;
 
   window.contract = await new web3.eth.Contract(contractABI, contractAddress);
