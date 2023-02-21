@@ -16,7 +16,7 @@ import AddOrganization from "./components/AddOrganization";
 import MetamaskSDKApp from "./components/MetamaskSDKApp";
 //import MetaMaskSDK from "@metamask/sdk";
 import Addimagetest from "./components/Addimagetest";
-import Minter from "./components/Minter";
+//import Minter from "./components/Minter";
 
 
 
@@ -86,11 +86,7 @@ function App() {
             </Link>
           </li>          
           
-          <li className="nav-item">
-            <Link to={"/Minter"} className="nav-link">
-            Minter
-            </Link>
-          </li>
+          
           
         </div>
       </nav>
@@ -109,8 +105,7 @@ function App() {
           <Route path="/addorganization" element={<AddOrganization/>}/>
           <Route path="/MetamaskSDKApp" element={<MetamaskSDKApp/>}/>
           <Route path="/Addimagetest" element={<Addimagetest/>}/>
-          <Route path="/Minter" element={<Minter/>}/>
-
+          
           
         </Routes>
       </div>
