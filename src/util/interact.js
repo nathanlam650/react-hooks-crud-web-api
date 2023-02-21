@@ -90,7 +90,7 @@ async function loadContract() {
   return new web3.eth.Contract(contractABI, contractAddress);
 }
 
-export const mintNFT = async (url, name, description) => {
+export const safeMint = async (url, name, description) => {
   if (url.trim() == "" || name.trim() == "" || description.trim() == "") {
     return {
       success: false,
