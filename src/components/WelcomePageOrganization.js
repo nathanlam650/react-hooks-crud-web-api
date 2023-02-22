@@ -2,9 +2,6 @@ import React, {  useEffect } from "react";
 
 const WelcomePageOrganization = () => {
 
-  useEffect(() => {
-    retrieveVolunteers();
-  }, []);
 
 
   return (

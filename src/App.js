@@ -17,8 +17,10 @@ import MetamaskSDKApp from "./components/MetamaskSDKApp";
 //import MetaMaskSDK from "@metamask/sdk";
 import Addimagetest from "./components/Addimagetest";
 //import Minter from "./components/Minter";
-
-
+import VolunteerUI from "./volunteerUI";
+import OrganizationUI from "./OrganizationUI";
+import WelcomePageOrganization from "./components/WelcomePageOrganization";
+import WelcomePageVolunteer from "./components/WelcomePageVolunteer";
 
 //const MMSDK = new MetaMaskSDK(eth_requestAccounts);
 
@@ -106,13 +108,29 @@ function App() {
           <Route path="/MetamaskSDKApp" element={<MetamaskSDKApp/>}/>
           <Route path="/Addimagetest" element={<Addimagetest/>}/>
           
-          
+          <Route path="/Vol/:id" element={<VolunteerUI />}>
+            <Route path="" element={<WelcomePageVolunteer/>}/>
+            <Route path="Eventslist" element={<EventList />}/>
+            <Route path="Organizationlist" element={<OrganizationList/>}/>
+            <Route path="MetamaskSDKApp" element={<MetamaskSDKApp/>}/>
+          </Route>
+
+          <Route path="Org/:id" element={<OrganizationUI/>}>
+            <Route path="" element={<WelcomePageOrganization/>} /> 
+            <Route path="Volunteerslist" element={<VolunteersList/>}/>
+            <Route path="addevent" element={<AddEvent/>}/>
+            <Route path="Eventslist" element={<EventList/>}/>
+            <Route path="Organizationlist" element={<OrganizationList/>}/>
+          </Route>
         </Routes>
       </div>
     </div>
   );
 }
 //<Route path="/ViewActivities" element={<ViewActivities/>} />
-          
+//todo
+
+//<Route path="/Login" element={<Login/>}/>
+//
 
 export default App;
