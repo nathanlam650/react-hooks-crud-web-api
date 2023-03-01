@@ -1,5 +1,6 @@
 //import "./App.css";
 import MetaMaskSDK from "@metamask/sdk";
+import DataService from "../services/MetamaskService";
 
 import { useState, useEffect } from "react";
 
@@ -15,10 +16,36 @@ ethereumButton.addEventListener('click', () => {
 });
 */
 
-function MetamaskSDKApp() {
+function MintNFTTestApp() {
   const [chain, setChain] = useState("");
   const [account, setAccount] = useState("");
   const [response, setResponse] = useState("");
+
+
+  const MintNFTt1 = () => {
+    var data = {
+      title: "tit",
+      description: "tutorial.description"
+    };
+
+    DataService.create(data)
+      .then(response => {
+        /*
+        setTutorial({
+          id: "response.data.id",
+          title: "response.data.title",
+          description: "response.data.description",
+          published: "response.data.published"
+        });
+        setSubmitted(true);
+        */
+        console.log(response.data);
+
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  };
 
   const connect = () => {
     //ethereum.request(args: RequestArguments): Promise<unknown>;
@@ -210,7 +237,15 @@ function MetamaskSDKApp() {
         <button style={{ padding: 10, margin: 10 }} onClick={ethereumqrcode}>
           ethereumqrcode
         </button>
-        
+        <button style={{ padding: 10, margin: 10 }} onClick={MintNFTt1}>
+          MintNFTt1
+        </button>
+        <button style={{ padding: 10, margin: 10 }} onClick={MintNFTt1}>
+          MintNFTt1
+        </button>        
+        <button style={{ padding: 10, margin: 10 }} onClick={MintNFTt1}>
+          MintNFTt1
+        </button>
 
         {chain && `Connected chain: ${chain}`}
         <p></p>
@@ -222,39 +257,72 @@ function MetamaskSDKApp() {
   );
 }
 
-export default MetamaskSDKApp;
+export default MintNFTTestApp;
+
+/*
+const AddTutorial = () => {
+  const initialTutorialState = {
+    id: null,
+    title: "",
+    description: "",
+    published: false
+  };
+  const [tutorial, setTutorial] = useState(initialTutorialState);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleInputChange = event => {
+    const { name, value } = event.target;
+    setTutorial({ ...tutorial, [name]: value });
+  };
 
 
-/**
- * [HMR] Waiting for update signal from WDS...
-react_devtools_backend.js:4012 src/App.js
-  Line 86:56:  Comments inside children section of tag should be placed inside braces  react/jsx-no-comment-textnodes
-overrideMethod @ react_devtools_backend.js:4012
-printWarnings @ webpackHotDevClient.js:138
-handleWarnings @ webpackHotDevClient.js:143
-push../node_modules/react-dev-utils/webpackHotDevClient.js.connection.onmessage @ webpackHotDevClient.js:210
-2MetamaskSDKApp.js:18 request accounts ERR Error: Not connected
-    at <anonymous>:1:4417
-VM81:1 Uncaught (in promise) {message: 'Not connected', code: 4900}
-(anonymous) @ VM81:1
-postMessage (async)
-(anonymous) @ inject.js:10
-ethereum.request({
-        method: "eth_requestAccounts",
-        params: [{ eth_accounts: {} }],
-      })
-Promise {<pending>}[[Prototype]]: Promisecatch: ƒ catch()length: 1name: "catch"arguments: (...)caller: (...)[[Prototype]]: ƒ ()constructor: ƒ Promise()finally: ƒ finally()then: ƒ then()Symbol(Symbol.toStringTag): "Promise"[[Prototype]]: Object[[PromiseState]]: "pending"[[PromiseResult]]: undefined
-VM81:1 Uncaught (in promise) Error: Not connected
-    at <anonymous>:1:4417
-(anonymous) @ VM81:1
-setTimeout (async)
-(anonymous) @ VM81:1
-doSend @ VM81:1
-doSend @ VM81:1
-request @ VM81:1
-(anonymous) @ VM135:1
-VM81:1 Uncaught (in promise) {message: 'Not connected', code: 4900}
-(anonymous) @ VM81:1
-postMessage (async)
-(anonymous) @ inject.js:10
- */
+  const newTutorial = () => {
+    setTutorial(initialTutorialState);
+    setSubmitted(false);
+  };
+
+  return (
+    <div className="submit-form">
+      {submitted ? (
+        <div>
+          <h4>You submitted successfully!</h4>
+          <button className="btn btn-success" onClick={newTutorial}>
+            Add
+          </button>
+        </div>
+      ) : (
+        <div>
+          <div className="form-group">
+            <label htmlFor="title">Title</label>
+            <input
+              type="text"
+              className="form-control"
+              id="title"
+              required
+              value={tutorial.title}
+              onChange={handleInputChange}
+              name="title"
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="description">Description</label>
+            <input
+              type="text"
+              className="form-control"
+              id="description"
+              required
+              value={tutorial.description}
+              onChange={handleInputChange}
+              name="description"
+            />
+          </div>
+
+
+        </div>
+      )}
+    </div>
+  );
+};
+
+*/
