@@ -1,3 +1,5 @@
+//all moved to minter, should be delete later
+
 import { useState } from "react"
 import axios from "axios"
 
