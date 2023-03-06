@@ -4,6 +4,7 @@ import {
   getCurrentWalletConnected,
   mintNFT,
 } from "./util/interact.js";
+import FileUpload from "./fileupload.js";
 
 const Minter = (props) => {
   const [walletAddress, setWallet] = useState("");
@@ -107,6 +108,8 @@ const Minter = (props) => {
       <p id="status" style={{ color: "red" }}>
         {status}
       </p>
+
+      <FileUpload/>
     </div>
   );
 };
