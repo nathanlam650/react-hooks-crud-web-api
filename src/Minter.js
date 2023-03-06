@@ -45,7 +45,7 @@ const Minter = (props) => {
   const [ipfsfileUrl, setipfsfileUrl] = useState("");
   const [selectedFile, setSelectedFile] = useState();
   
-  
+
   const changeHandler = (event) => {
   
     setSelectedFile(event.target.files[0]);
@@ -118,10 +118,18 @@ const Minter = (props) => {
     setWallet(walletResponse.address);
   };
 
+ const saveNFTdata = async (inboxstatus,inboxname,inboxdescription,inboxipfsfileUrl) => {
+   inboxstatus,inboxname,inboxdescription,inboxipfsfileUrl
+   //todo, save in mongo
+
+ };
+
   const onMintPressed = async () => {
     const { success, status } = await mintNFT(ipfsfileUrl, name, description);
     setStatus(status);
     if (success) {
+      saveNFTdata(status,name,description,ipfsfileUrl);
+      //todo?
       setName("");
       setDescription("");
       setipfsfileUrl("");
