@@ -42,9 +42,10 @@ const Minter = (props) => {
   const [status, setStatus] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [url, setURL] = useState("");
+  const [ipfsfileUrl, setipfsfileUrl] = useState("");
   const [selectedFile, setSelectedFile] = useState();
-
+  
+  
   const changeHandler = (event) => {
   
     setSelectedFile(event.target.files[0]);
@@ -52,6 +53,7 @@ const Minter = (props) => {
 
   const handleSubmission = async() => {
 
+    setipfsfileUrl("In progress...")
     const formData = new FormData();
     
     formData.append('file', selectedFile)
@@ -67,7 +69,13 @@ const Minter = (props) => {
     formData.append('pinataOptions', options);
 
     const IPFSfilerespond = pinFILEToIPFS(formData)
-    
+    if (IPFSfilerespond.success == true){
+      setipfsfileUrl(IPFSfilerespond.pinataUrl)
+    }
+    else
+    if (IPFSfilerespond.success == true){
+      setipfsfileUrl("hard_code_one_later_for_error_in_demo")
+    }
 
   };
   useEffect(async () => {
@@ -111,12 +119,12 @@ const Minter = (props) => {
   };
 
   const onMintPressed = async () => {
-    const { success, status } = await mintNFT(url, name, description);
+    const { success, status } = await mintNFT(ipfsfileUrl, name, description);
     setStatus(status);
     if (success) {
       setName("");
       setDescription("");
-      setURL("");
+      setipfsfileUrl("");
     }
   };
 
@@ -136,15 +144,27 @@ const Minter = (props) => {
       <br></br>
       <h1 id="title">🧙‍♂️ Alchemy NFT Minter</h1>
       <p>
-        Simply add your asset's link, name, and description, then press "Mint."
+        1.Simply upload a file, then press "upload. And wait a success sign and ipfs url. 
+        2.After that, write name, and description, then press "Mint."
       </p>
+      
+      <div className="IPFSFileupolad">
+        <label class="form-label">Choose File</label>
+        <input type="file"  onChange={changeHandler}/>
+        <button onClick={handleSubmission}>upload</button>
+      </div>
+
       <form>
-        <h2>🖼 Link to asset: </h2>
+        {/*<h2>🖼 Link to asset: </h2>
         <input
           type="text"
           placeholder="e.g. https://gateway.pinata.cloud/ipfs/<hash>"
           onChange={(event) => setURL(event.target.value)}
-        />
+        />*/}
+        <h2>🖼Url now:</h2>
+        <p>
+          {ipfsfileUrl}
+        </p>
         <h2>🤔 Name: </h2>
         <input
           type="text"
@@ -165,11 +185,7 @@ const Minter = (props) => {
         {status}
       </p>
 
-      <div className="IPFSFileupolad">
-        <label class="form-label">Choose File</label>
-        <input type="file"  onChange={changeHandler}/>
-        <button onClick={handleSubmission}>Submit</button>
-      </div>
+
     </div>
   );
 };
