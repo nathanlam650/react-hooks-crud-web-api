@@ -20,10 +20,13 @@ const pinFILEToIPFS = async(JSONBody) => {
               pinata_secret_api_key: secret,
           }
       })
-      .then(function (response) {
+      .then(response=> {
+        //console.log("t1",response)
+        var temp_url = response.data.IpfsHash        
+        //console.log("t2",temp_url)
          return {
              success: true,
-             pinataUrl: "https://gateway.pinata.cloud/ipfs/" + response.data.IpfsHash
+             pinataUrl:  temp_url,
          };
       })
       .catch(function (error) {
@@ -69,11 +72,17 @@ const Minter = (props) => {
     formData.append('pinataOptions', options);
 
     const IPFSfilerespond = pinFILEToIPFS(formData)
-    if (IPFSfilerespond.success == true){
-      setipfsfileUrl(IPFSfilerespond.pinataUrl)
+
+    //console.log(IPFSfilerespond)
+    console.log((await IPFSfilerespond).success)
+        
+    if ((await IPFSfilerespond).success == true){
+      //setipfsfileUrl("Finish")
+      //console.log((await IPFSfilerespond).pinataUrl)
+      setipfsfileUrl((await IPFSfilerespond).pinataUrl)
     }
     else
-    if (IPFSfilerespond.success == true){
+    if ((await IPFSfilerespond).success == false){
       setipfsfileUrl("hard_code_one_later_for_error_in_demo")
     }
 
@@ -119,7 +128,7 @@ const Minter = (props) => {
   };
 
  const saveNFTdata = async (inboxstatus,inboxname,inboxdescription,inboxipfsfileUrl) => {
-   inboxstatus,inboxname,inboxdescription,inboxipfsfileUrl
+   //inboxstatus,inboxname,inboxdescription,inboxipfsfileUrl
    //todo, save in mongo
 
  };
