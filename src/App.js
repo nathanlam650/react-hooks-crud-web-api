@@ -21,7 +21,6 @@ import VolunteerUI from "./volunteerUI";
 import OrganizationUI from "./OrganizationUI";
 import WelcomePageOrganization from "./components/WelcomePageOrganization";
 import WelcomePageVolunteer from "./components/WelcomePageVolunteer";
-import MintNFTTestApp from "./components/MintNFTTestApp";
 import Minter from "./Minter";
 //const MMSDK = new MetaMaskSDK(eth_requestAccounts);
 
@@ -88,23 +87,19 @@ function App() {
             Addimagetest
             </Link>
           </li>  
-          <li className="nav-item">
-            <Link to={"/MintNFTTestApp"} className="nav-link">
-            /MintNFTTestApp
-            </Link>
-          </li> 
+
           <li className="nav-item">
             <Link to={"/Minter"} className="nav-link">
             /Minter
             </Link>
           </li> 
           <li className="nav-item">
-            <Link to={"/MintNFTTestApp"} className="nav-link">
+            <Link to={"/Minter"} className="nav-link">
             /a
             </Link>
           </li> 
           <li className="nav-item">
-            <Link to={"/MintNFTTestApp"} className="nav-link">
+            <Link to={"/Minter"} className="nav-link">
             /a
             </Link>
           </li>   
@@ -128,14 +123,10 @@ function App() {
           <Route path="/addorganization" element={<AddOrganization/>}/>
           <Route path="/MetamaskSDKApp" element={<MetamaskSDKApp/>}/>
           <Route path="/Addimagetest" element={<Addimagetest/>}/>
-          <Route path="/MintNFTTestApp" element={<MintNFTTestApp/>}/>
-          <Route path="/MintNFTTestApp" element={<MintNFTTestApp/>}/>
           <Route path="/Minter" element={<Minter/>}/>
-          {/** 
-          <Route path="/MintNFTTestApp" element={<MintNFTTestApp/>}/>
-          <Route path="/MintNFTTestApp" element={<MintNFTTestApp/>}/>
-          <Route path="/MintNFTTestApp" element={<MintNFTTestApp/>}/>
-          */}
+          <Route path="/Minter" element={<Minter/>}/>
+          <Route path="/Minter" element={<Minter/>}/>
+
           
           
 
