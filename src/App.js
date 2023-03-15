@@ -22,6 +22,7 @@ import OrganizationUI from "./OrganizationUI";
 import WelcomePageOrganization from "./components/WelcomePageOrganization";
 import WelcomePageVolunteer from "./components/WelcomePageVolunteer";
 import Minter from "./Minter";
+import ShowNFT from "./components/ShowNFT";
 //const MMSDK = new MetaMaskSDK(eth_requestAccounts);
 
 //const ethereum = MMSDK.getProvider(); // You can also access via window.ethereum
@@ -94,8 +95,8 @@ function App() {
             </Link>
           </li> 
           <li className="nav-item">
-            <Link to={"/Minter"} className="nav-link">
-            /a
+            <Link to={"/ShowNFT"} className="nav-link">
+            /ShowNFT
             </Link>
           </li> 
           <li className="nav-item">
@@ -124,7 +125,7 @@ function App() {
           <Route path="/MetamaskSDKApp" element={<MetamaskSDKApp/>}/>
           <Route path="/Addimagetest" element={<Addimagetest/>}/>
           <Route path="/Minter" element={<Minter/>}/>
-          <Route path="/Minter" element={<Minter/>}/>
+          <Route path="/ShowNFT" element={<ShowNFT/>}/>
           <Route path="/Minter" element={<Minter/>}/>
 
           

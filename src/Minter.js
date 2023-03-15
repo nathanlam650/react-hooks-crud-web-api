@@ -5,6 +5,7 @@ import {
   mintNFT,
 } from "./util/interact.js";
 import axios from "axios"
+import DataService from "./services/MintedNFTService";
 
 require('dotenv').config();
 const key = process.env.REACT_APP_PINATA_KEY;
@@ -40,14 +41,48 @@ const pinFILEToIPFS = async(JSONBody) => {
 
 
 
-const Minter = (props) => {
+const Minter = (props) => {  
   const [walletAddress, setWallet] = useState("");
   const [status, setStatus] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [ipfsfileUrl, setipfsfileUrl] = useState("");
   const [selectedFile, setSelectedFile] = useState();
-  
+  const [theNFTurl, settheNFTurl] = useState("");
+
+
+
+  const saveEvent = (txHash) => {
+    var data = {
+      title: name,
+      description: description,
+      photourl: ipfsfileUrl,
+      NFTurl: txHash,
+      owner: name,
+    };
+
+    DataService.create(data)
+      .then(response => {
+        /*
+        setNFTdata({
+          id: response.data.id,
+          title: response.data.title,
+          description: response.data.description,
+          published: response.data.published,
+          hash: response.data.hash,
+          photourl: response.data.photourl,
+          owner: response.data.owner,
+        });
+
+        setSubmitted(true);
+        */
+        console.log(response.data);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  };
+
 
   const changeHandler = (event) => {
   
@@ -73,12 +108,9 @@ const Minter = (props) => {
 
     const IPFSfilerespond = pinFILEToIPFS(formData)
 
-    //console.log(IPFSfilerespond)
     console.log((await IPFSfilerespond).success)
         
     if ((await IPFSfilerespond).success == true){
-      //setipfsfileUrl("Finish")
-      //console.log((await IPFSfilerespond).pinataUrl)
       setipfsfileUrl((await IPFSfilerespond).pinataUrl)
     }
     else
@@ -127,21 +159,35 @@ const Minter = (props) => {
     setWallet(walletResponse.address);
   };
 
- const saveNFTdata = async (inboxstatus,inboxname,inboxdescription,inboxipfsfileUrl) => {
-   //inboxstatus,inboxname,inboxdescription,inboxipfsfileUrl
-   //todo, save in mongo
-
- };
 
   const onMintPressed = async () => {
-    const { success, status } = await mintNFT(ipfsfileUrl, name, description);
+    const { success, status, txHash } = await mintNFT(ipfsfileUrl, name, description);
     setStatus(status);
     if (success) {
-      saveNFTdata(status,name,description,ipfsfileUrl);
-      //todo?
-      setName("");
-      setDescription("");
-      setipfsfileUrl("");
+      //setName(name);
+      //setDescription(description);      
+      //console.log(status)
+      //console.log(txHash)
+      settheNFTurl(txHash)
+      
+      saveEvent(txHash)
+    }
+  };
+
+  const fakeonMintPressed = async () => {
+    //const { success, status,txHash } = await mintNFT(ipfsfileUrl, name, description);
+    const success = true
+    const status="ba000"
+    const txHash="000"
+    setStatus(status);
+    console.log(success)
+    if (success) {
+      //setName(name);
+      //setDescription(description);      
+      //console.log(status)
+      //console.log(txHash)
+      await settheNFTurl(txHash)
+      saveEvent(txHash)
     }
   };
 
@@ -172,12 +218,6 @@ const Minter = (props) => {
       </div>
 
       <form>
-        {/*<h2>🖼 Link to asset: </h2>
-        <input
-          type="text"
-          placeholder="e.g. https://gateway.pinata.cloud/ipfs/<hash>"
-          onChange={(event) => setURL(event.target.value)}
-        />*/}
         <h2>🖼Url now:</h2>
         <p>
           {ipfsfileUrl}
@@ -197,6 +237,9 @@ const Minter = (props) => {
       </form>
       <button id="mintButton" onClick={onMintPressed}>
         Mint NFT
+      </button>
+      <button id="fakemintButton" onClick={fakeonMintPressed}>
+        Mint NFT fake
       </button>
       <p id="status" style={{ color: "red" }}>
         {status}
