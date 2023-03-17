@@ -25,26 +25,6 @@ import ShowNFT from "./components/ShowNFT";
 
 //ethereum.request({ method: 'eth_requestAccounts', params: [] });
 
-import Buttons from './app/basic-ui/Buttons';
-import Dropdowns from './app/basic-ui/Dropdowns';
-import Typography from'./app/basic-ui/Typography';
-
-//import BasicElements from'./app/form-elements/BasicElements';
-
-import BasicTable from './app/tables/BasicTable';
-/*
-const Dashboard = lazy(() => import('./app/dashboard/Dashboard'));
-const Mdi = lazy(() => import('./app/icons/Mdi'));
-
-const ChartJs = lazy(() => import('./app/charts/ChartJs'));
-
-const Error404 = lazy(() => import('./app/error-pages/Error404'));
-const Error500 = lazy(() => import('./app/error-pages/Error500'));
-
-const Login = lazy(() => import('./app/user-pages/Login'));
-const Register1 = lazy(() => import('./app/user-pages/Register'));
-
-*/
 function App() {
   return (
     <div>
@@ -137,28 +117,7 @@ function App() {
           <Route path="/Minter" element={<Minter/>}/>
 
           
-
-<Route path="/basic-ui/buttons" component={ Buttons } />
-<Route path="/basic-ui/dropdowns" component={ Dropdowns } />
-<Route path="/basic-ui/typography" component={ Typography } />
-
-<Route path="/tables/basic-table" component={ BasicTable } />
-
-{//<Route path="/form-Elements/basic-elements" component={ BasicElements } />
-}
-
-{/*<Route path="/icons/mdi" component={ Mdi } />
-
-<Route exact path="/dashboard" component={ Dashboard } />
-<Route path="/charts/chart-js" component={ ChartJs } />
-
-
-<Route path="/user-pages/login-1" component={ Login } />
-<Route path="/user-pages/register-1" component={ Register1 } />
-
-<Route path="/error-pages/error-404" component={ Error404 } />
-<Route path="/error-pages/error-500" component={ Error500 } />
-*/}         
+          
 
           <Route path="/Vol/:id" element={<VolunteerUI />}>
             <Route path="" element={<WelcomePageVolunteer/>}/>
