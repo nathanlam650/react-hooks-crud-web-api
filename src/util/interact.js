@@ -100,8 +100,8 @@ export const mintNFT = async (url, name, description) => {
 
   //make metadata
   const metadata = new Object();
-  metadata.name = name;
   metadata.image = url;
+  metadata.name = name;
   metadata.description = description;
 
   const pinataResponse = await pinJSONToIPFS(metadata);
@@ -118,7 +118,7 @@ export const mintNFT = async (url, name, description) => {
   const transactionParameters = {
     to: contractAddress, // Required except during contract publications.
     from: window.ethereum.selectedAddress, // must match user's active address.
-    data: window.contract.methods
+    data: window.contract.methods //todo many need to change reciver address... so frm o1 to v1
     .mintNFT(window.ethereum.selectedAddress, tokenURI)//.mint(window.ethereum.selectedAddress)
       .encodeABI(),
   };
