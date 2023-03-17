@@ -95,7 +95,7 @@ const Minter = (props) => {
     setSelectedFile(event.target.files[0]);
   };
   const handleipfsdefaultpicture = (event) => {
-    console.log(event.target.alt);
+    //console.log(event.target.alt);
     setipfsfileUrl(event.target.alt);
   };
 
