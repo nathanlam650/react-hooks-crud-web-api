@@ -7,6 +7,8 @@ import {
 import axios from "axios"
 import DataService from "./services/MintedNFTService";
 
+import Button from 'react-bootstrap/Button';
+
 require('dotenv').config();
 const key = process.env.REACT_APP_PINATA_KEY;
 const secret = process.env.REACT_APP_PINATA_SECRET;
@@ -193,7 +195,7 @@ const Minter = (props) => {
 
   return (
     <div className="Minter">
-      <button id="walletButton" onClick={connectWalletPressed}>
+      <Button id="walletButton" onClick={connectWalletPressed}>
         {walletAddress.length > 0 ? (
           "Connected: " +
           String(walletAddress).substring(0, 6) +
@@ -202,7 +204,7 @@ const Minter = (props) => {
         ) : (
           <span>Connect Wallet</span>
         )}
-      </button>
+      </Button>
 
       <br></br>
       <h1 id="title">🧙‍♂️ Alchemy NFT Minter</h1>
@@ -214,7 +216,7 @@ const Minter = (props) => {
       <div className="IPFSFileupolad">
         <label class="form-label">Choose File</label>
         <input type="file"  onChange={changeHandler}/>
-        <button onClick={handleSubmission}>upload</button>
+        <Button onClick={handleSubmission}>upload</Button>
       </div>
 
       <form>
@@ -235,12 +237,12 @@ const Minter = (props) => {
           onChange={(event) => setDescription(event.target.value)}
         />
       </form>
-      <button id="mintButton" onClick={onMintPressed}>
+      <Button id="mintButton" onClick={onMintPressed}>
         Mint NFT
-      </button>
-      <button id="fakemintButton" onClick={fakeonMintPressed}>
+      </Button>
+      <Button id="fakemintButton" onClick={fakeonMintPressed}>
         Mint NFT fake
-      </button>
+      </Button>
       <p id="status" style={{ color: "red" }}>
         {status}
       </p>

@@ -25,25 +25,26 @@ import ShowNFT from "./components/ShowNFT";
 
 //ethereum.request({ method: 'eth_requestAccounts', params: [] });
 
+//<img class="bg-img" src="https://toruskit.com/assets/img/util/gray-w.svg"/>
+
+const abab = {      
+  backgroundImage: `url('https://mdbootstrap.com/img/Photos/Others/images/76.jpg')`,
+  height: `100vh`}
+
 function App() {
   return (
-    <div>
+    <div style={{ 
+      backgroundImage: `url('https://mdbootstrap.com/img/Photos/Others/images/76.jpg')`,
+      height: `100vh`
+    }
+    }>
+
       <nav className="navbar navbar-expand navbar-dark bg-dark">
-        <a href="/tutorials" className="navbar-brand">
+        <a href="/Register" className="navbar-brand">
           VolunteerWeb3
         </a>
 
         <div className="navbar-nav mr-auto">
-          <li className="nav-item">
-            <Link to={"/tutorials"} className="nav-link">
-              Volunteer Jobs
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to={"/add"} className="nav-link">
-              Add New Activities
-            </Link>
-          </li>
           <li className="nav-item">
             <Link to={"/Register"} className="nav-link">
               New register
@@ -102,39 +103,45 @@ function App() {
         </div>
       </nav>
 
-      <div className="container mt-3">
-        <Routes>
-          <Route path="/" element={<Register/>} /> //*mean show all events*/
-          <Route path="/Register" element={<Register/>} />
-          <Route path="/Volunteerslist" element={<VolunteersList/>}/>
-          <Route path="/addevent" element={<AddEvent/>}/>
-          <Route path="/Eventslist" element={<EventList/>}/>
-          <Route path="/Organizationlist" element={<OrganizationList/>}/>
-          <Route path="/addorganization" element={<AddOrganization/>}/>
-          <Route path="/Addimagetest" element={<Addimagetest/>}/>
-          <Route path="/Minter" element={<Minter/>}/>
-          <Route path="/ShowNFT" element={<ShowNFT/>}/>
-          <Route path="/Minter" element={<Minter/>}/>
+      <div className="container mt-3 has-bg-img" style={{ 
+        backgroundImage: `url("https://via.placeholder.com/500")` 
+      }}>
+      
 
-          
-          
+          <Routes>
+            <Route path="/" element={<Register/>} /> //*mean show all events*/
+            <Route path="/Register" element={<Register/>} />
+            <Route path="/Volunteerslist" element={<VolunteersList/>}/>
+            <Route path="/addevent" element={<AddEvent/>}/>
+            <Route path="/Eventslist" element={<EventList/>}/>
+            <Route path="/Organizationlist" element={<OrganizationList/>}/>
+            <Route path="/addorganization" element={<AddOrganization/>}/>
+            <Route path="/Addimagetest" element={<Addimagetest/>}/>
+            <Route path="/Minter" element={<Minter/>}/>
+            <Route path="/ShowNFT" element={<ShowNFT/>}/>
+            <Route path="/Minter" element={<Minter/>}/>
 
-          <Route path="/Vol/:id" element={<VolunteerUI />}>
-            <Route path="" element={<WelcomePageVolunteer/>}/>
-            <Route path="Eventslist" element={<EventList />}/>
-            <Route path="Organizationlist" element={<OrganizationList/>}/>
-          </Route>
+            
+            
 
-          <Route path="Org/:id" element={<OrganizationUI/>}>
-            <Route path="" element={<WelcomePageOrganization/>} /> 
-            <Route path="Volunteerslist" element={<VolunteersList/>}/>
-            <Route path="addevent" element={<AddEvent/>}/>
-            <Route path="Eventslist" element={<EventList/>}/>
-            <Route path="Organizationlist" element={<OrganizationList/>}/>
-          </Route>
-        </Routes>
+            <Route path="/Vol/:id" element={<VolunteerUI />}>
+              <Route path="" element={<WelcomePageVolunteer/>}/>
+              <Route path="Eventslist" element={<EventList />}/>
+              <Route path="Organizationlist" element={<OrganizationList/>}/>
+            </Route>
+
+            <Route path="Org/:id" element={<OrganizationUI/>}>
+              <Route path="" element={<WelcomePageOrganization/>} /> 
+              <Route path="Volunteerslist" element={<VolunteersList/>}/>
+              <Route path="addevent" element={<AddEvent/>}/>
+              <Route path="Eventslist" element={<EventList/>}/>
+              <Route path="Organizationlist" element={<OrganizationList/>}/>
+            </Route>
+          </Routes>
+          </div>
+
       </div>
-    </div>
+
   );
 }
 //<Route path="/ViewActivities" element={<ViewActivities/>} />

@@ -129,7 +129,8 @@ const Register = () => {
     };
 
   return (
-    <div className="submit-form">
+    <div className="submit-form       has-bg-img    ">
+      
       
       <button id="walletButton" onClick={connectWalletPressed} className="btn btn-success">
         {walletAddress.length > 0 ? (
@@ -145,7 +146,8 @@ const Register = () => {
 
 
 
-        <div>
+        <div >
+
           <div className="form-group">
             <label htmlFor="username">Username</label>
             <input

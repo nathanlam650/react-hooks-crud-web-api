@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import DataService from "../services/EventService";
 import { Link } from "react-router-dom";
+import Table from 'react-bootstrap/Table';
 
 const EventList = () => {
   const [events, setEvents] = useState([]);
@@ -160,6 +161,34 @@ const EventList = () => {
           </div>
         )}
       </div>
+      <Table striped bordered hover variant="primary">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+          </tr>
+        </thead>
+        <tbody>
+        {events &&
+              events.map((event, index) => (
+                <tr
+                  //className={
+                  //  "list-group-item " + (index === currentIndex ? "active" : "")
+                  //}
+                  onClick={() => setActiveEvent(event, index)}
+                  key={index}
+                >
+                <td>{event.title}</td>
+                  
+                <td>{event.time}</td>
+                <td>{event.place}</td>
+                <td>{event.place}</td>
+                </tr>
+              ))}
+        </tbody>
+      </Table>
     </div>
   );
 };

@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import DataService from "../services/MintedNFTService";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
+
+import {
+  FacebookShareButton,
+  } from "react-share"
 
 const ShowNFT = () => {
   const [events, setEvents] = useState([]);
@@ -110,7 +114,30 @@ const ShowNFT = () => {
       </div>
       <div className="col-md-6">
         {currentEvent ? (
+          
           <div>
+            
+          <div className="card mb-4 rounded-3 shadow-sm">
+          <div className="card-header py-3">
+            <h4 className="my-0 fw-normal">{currentEvent.title}</h4>
+          </div>
+          <div className="card-body">
+            <h1 className="card-title pricing-card-title">{currentEvent.title}</h1>
+            <ul className="list-unstyled mt-3 mb-4">
+              {currentEvent.description}
+
+            </ul>
+            <img src={"https://gateway.pinata.cloud/ipfs/" +currentEvent.photourl} width={150} height={150}>
+            </img>
+            
+            <div className="w-100 btn btn-lg btn-outline-primary">
+              <FacebookShareButton url={"https://gateway.pinata.cloud/ipfs/" +currentEvent.photourl}  >
+                Share
+              </FacebookShareButton>
+            </div>
+          </div>
+        </div>
+      
             <h4>Event</h4>
             <div>
               <label>
@@ -142,7 +169,6 @@ const ShowNFT = () => {
             <div>
               <img src={"https://gateway.pinata.cloud/ipfs/" +currentEvent.photourl} width={150} height={150}>
               </img>
-
             </div>
 
             <div>
@@ -152,12 +178,6 @@ const ShowNFT = () => {
               {currentEvent.published ? "Published" : "Pending"}
             </div>
 
-            <Link
-              to={"/Events/" + currentEvent.id}
-              className="badge badge-warning"
-            >
-              Edit
-            </Link>
           </div>
         ) : (
           <div>
