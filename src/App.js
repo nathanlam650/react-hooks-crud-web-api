@@ -1,9 +1,11 @@
 import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
-
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
+import AddTutorial from "./components/AddTutorial";
+import Tutorial from "./components/Tutorial";
+import TutorialsList from "./components/TutorialsList";
 //import ViewActivities from "./components/ViewActivities";
 import Register from "./components/Register";
 import VolunteersList from "./components/VolunteersList";
@@ -11,8 +13,10 @@ import AddEvent from "./components/AddEvent";
 import EventList from "./components/EventsList";
 import OrganizationList from "./components/OrganizationList";
 import AddOrganization from "./components/AddOrganization";
-//import MetamaskSDKApp from "./components/MetamaskSDKApp";
+import MetamaskSDKApp from "./components/MetamaskSDKApp";
+//import MetaMaskSDK from "@metamask/sdk";
 import Addimagetest from "./components/Addimagetest";
+//import Minter from "./components/Minter";
 import VolunteerUI from "./volunteerUI";
 import OrganizationUI from "./OrganizationUI";
 import WelcomePageOrganization from "./components/WelcomePageOrganization";
@@ -74,7 +78,11 @@ function App() {
             </Link>
           </li>
 
-           
+          <li className="nav-item">
+            <Link to={"/MetamaskSDKApp"} className="nav-link">
+            MetamaskSDKApp
+            </Link>
+          </li>            
           <li className="nav-item">
             <Link to={"/Addimagetest"} className="nav-link">
             Addimagetest
@@ -105,12 +113,16 @@ function App() {
       <div className="container mt-3">
         <Routes>
           <Route path="/" element={<Register/>} /> //*mean show all events*/
+          <Route path="/tutorials" element={<TutorialsList/>} />
+          <Route path="/add" element={<AddTutorial/>} />
+          <Route path="/tutorials/:id" element={<Tutorial/>} />
           <Route path="/Register" element={<Register/>} />
           <Route path="/Volunteerslist" element={<VolunteersList/>}/>
           <Route path="/addevent" element={<AddEvent/>}/>
           <Route path="/Eventslist" element={<EventList/>}/>
           <Route path="/Organizationlist" element={<OrganizationList/>}/>
           <Route path="/addorganization" element={<AddOrganization/>}/>
+          <Route path="/MetamaskSDKApp" element={<MetamaskSDKApp/>}/>
           <Route path="/Addimagetest" element={<Addimagetest/>}/>
           <Route path="/Minter" element={<Minter/>}/>
           <Route path="/ShowNFT" element={<ShowNFT/>}/>
@@ -123,6 +135,7 @@ function App() {
             <Route path="" element={<WelcomePageVolunteer/>}/>
             <Route path="Eventslist" element={<EventList />}/>
             <Route path="Organizationlist" element={<OrganizationList/>}/>
+            <Route path="MetamaskSDKApp" element={<MetamaskSDKApp/>}/>
           </Route>
 
           <Route path="Org/:id" element={<OrganizationUI/>}>

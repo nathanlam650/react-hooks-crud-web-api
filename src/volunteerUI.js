@@ -1,9 +1,11 @@
 import React from "react";
 import { Routes, Route, Link,Outlet } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 import EventList from "./components/EventsList";
 import OrganizationList from "./components/OrganizationList";
+import MetamaskSDKApp from "./components/MetamaskSDKApp";
 import WelcomePageVolunteer from "./components/WelcomePageVolunteer";
 
 function VolunteerUI() {
@@ -27,7 +29,11 @@ function VolunteerUI() {
             </Link>
           </li>
 
-          
+          <li className="nav-item">
+            <Link to={"MetamaskSDKApp"} className="nav-link">
+            MetamaskSDKApp
+            </Link>
+          </li>            
          
           
         </div>
@@ -40,6 +46,7 @@ function VolunteerUI() {
         <Route path="/" element={<WelcomePageVolunteer/>}/>
           <Route path="/Eventslist" element={<EventList/>}/>
           <Route path="/Organizationlist" element={<OrganizationList/>}/>
+          <Route path="/MetamaskSDKApp" element={<MetamaskSDKApp/>}/>
           
         </Routes>
       </div> 
