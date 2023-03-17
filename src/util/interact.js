@@ -90,7 +90,7 @@ async function loadContract() {
   return new web3.eth.Contract(contractABI, contractAddress);
 }
 
-export const mintNFT = async (url, name, description) => {
+export const mintNFT = async (url, name, description, toaddress) => {
   if (url.trim() == "" || name.trim() == "" || description.trim() == "") {
     return {
       success: false,
@@ -119,7 +119,7 @@ export const mintNFT = async (url, name, description) => {
     to: contractAddress, // Required except during contract publications.
     from: window.ethereum.selectedAddress, // must match user's active address.
     data: window.contract.methods //todo many need to change reciver address... so frm o1 to v1
-    .mintNFT(window.ethereum.selectedAddress, tokenURI)//.mint(window.ethereum.selectedAddress)
+    .mintNFT(toaddress, tokenURI)//.mint(window.ethereum.selectedAddress)
       .encodeABI(),
   };
 

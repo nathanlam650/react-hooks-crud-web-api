@@ -52,6 +52,9 @@ const Minter = (props) => {
   const [ipfsfileUrl, setipfsfileUrl] = useState("");
   const [selectedFile, setSelectedFile] = useState();
   const [theNFTurl, settheNFTurl] = useState("");
+  const [toaddress, settoaddress] = useState("");
+
+  
 
 
 
@@ -168,7 +171,7 @@ const Minter = (props) => {
 
 
   const onMintPressed = async () => {
-    const { success, status, txHash } = await mintNFT(ipfsfileUrl, name, description);
+    const { success, status, txHash } = await mintNFT(ipfsfileUrl, name, description, toaddress);
     setStatus(status);
     if (success) {
       //setName(name);
@@ -231,13 +234,23 @@ const Minter = (props) => {
           placeholder="e.g. My first NFT!"
           onChange={(event) => setName(event.target.value)}
         />
+
+
         <h2>✍️ Description: </h2>
         <input
           type="text"
           placeholder="e.g. Even cooler than cryptokitties ;)"
           onChange={(event) => setDescription(event.target.value)}
         />
+
+        <h2>🤔 settoaddress: </h2>
+        <input
+          type="text"
+          placeholder="0x..."
+          onChange={(event) => settoaddress(event.target.value)}
+        />
       </form>
+
       <Button id="mintButton" onClick={onMintPressed}>
         Mint NFT
       </Button>
