@@ -9,6 +9,8 @@ import DataService from "./services/MintedNFTService";
 
 import Button from 'react-bootstrap/Button';
 
+import picture1 from "./picture1.png"
+
 require('dotenv').config();
 const key = process.env.REACT_APP_PINATA_KEY;
 const secret = process.env.REACT_APP_PINATA_SECRET;
@@ -40,7 +42,6 @@ const pinFILEToIPFS = async(JSONBody) => {
           }
       });
 };
-
 
 
 const Minter = (props) => {  
@@ -89,6 +90,10 @@ const Minter = (props) => {
   const changeHandler = (event) => {
   
     setSelectedFile(event.target.files[0]);
+  };
+  const handleipfsdefaultpicture = (event) => {
+    console.log(event.target.alt);
+    setipfsfileUrl(event.target.alt);
   };
 
   const handleSubmission = async() => {
@@ -176,22 +181,6 @@ const Minter = (props) => {
     }
   };
 
-  const fakeonMintPressed = async () => {
-    //const { success, status,txHash } = await mintNFT(ipfsfileUrl, name, description);
-    const success = true
-    const status="ba000"
-    const txHash="000"
-    setStatus(status);
-    console.log(success)
-    if (success) {
-      //setName(name);
-      //setDescription(description);      
-      //console.log(status)
-      //console.log(txHash)
-      await settheNFTurl(txHash)
-      saveEvent(txHash)
-    }
-  };
 
   return (
     <div className="Minter">
@@ -214,9 +203,21 @@ const Minter = (props) => {
       </p>
       
       <div className="IPFSFileupolad">
-        <label class="form-label">Choose File</label>
+        <label className="form-label">Choose File</label>
         <input type="file"  onChange={changeHandler}/>
+        
+        
+
         <Button onClick={handleSubmission}>upload</Button>
+      </div>
+
+      <div>
+        <img src={"https://gateway.pinata.cloud/ipfs/QmbMmNdghdMqHpA1bxuswHkrmSSguMBoavjHwwQiY9DDTi"} 
+          alt="QmbMmNdghdMqHpA1bxuswHkrmSSguMBoavjHwwQiY9DDTi"
+          onClick={handleipfsdefaultpicture}
+          height={150}
+          width={150}
+          />
       </div>
 
       <form>
@@ -240,9 +241,7 @@ const Minter = (props) => {
       <Button id="mintButton" onClick={onMintPressed}>
         Mint NFT
       </Button>
-      <Button id="fakemintButton" onClick={fakeonMintPressed}>
-        Mint NFT fake
-      </Button>
+
       <p id="status" style={{ color: "red" }}>
         {status}
       </p>
