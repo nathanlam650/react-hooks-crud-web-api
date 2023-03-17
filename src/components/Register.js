@@ -4,6 +4,7 @@ import {
   connectWallet,
   getCurrentWalletConnected,
 } from "../util/interact.js";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 
 
@@ -130,7 +131,7 @@ const Register = () => {
   return (
     <div className="submit-form">
       
-      <button id="walletButton" onClick={connectWalletPressed}>
+      <button id="walletButton" onClick={connectWalletPressed} className="btn btn-success">
         {walletAddress.length > 0 ? (
           "Connected: " +
           String(walletAddress).substring(0, 6) +
@@ -142,14 +143,7 @@ const Register = () => {
       </button>
 
 
-      <button style={{ padding: 10, margin: 10 } } 
-          onClick={connect}  
-          name="ETHaccountid"
-          id="transfer id"
-          value={account}
-          >
-          {account ? "Connected" : "Connect"}
-      </button>
+
 
         <div>
           <div className="form-group">
@@ -193,15 +187,6 @@ const Register = () => {
 
         <header className="metamask-connection">
 
-
-        <button style={{ padding: 10, margin: 10 }} 
-          onClick={handleInputChange}
-          name="ETHaccountid"
-          id="transfer id"
-          value={account}
-          >
-          {"click after connected to metamask"}
-        </button>
 
         {chain && `Connected chain: ${chain}`}
         <p></p>
