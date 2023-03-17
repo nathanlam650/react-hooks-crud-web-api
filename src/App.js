@@ -119,8 +119,8 @@ function App() {
             <Route path="/Organizationlist" element={<OrganizationList/>}/>
             <Route path="/addorganization" element={<AddOrganization/>}/>
             <Route path="/Addimagetest" element={<Addimagetest/>}/>
-            <Route path="/Minter" element={<Minter/>}/>
-            <Route path="/ShowNFT" element={<ShowNFT/>}/>
+            <Route path="/Minter" element={<Minter/>}/>              
+            <Route path="/ShowNFT" element={<ShowNFT username={usernameInroot}/>}/>
             
 
             <Route path="/Vol/:id" element={<VolunteerUI />}>

@@ -53,7 +53,7 @@ const Minter = (props) => {
   const [selectedFile, setSelectedFile] = useState();
   const [theNFTurl, settheNFTurl] = useState("");
   const [toaddress, settoaddress] = useState("");
-
+  const [owner, setowner] = useState("");
   
 
 
@@ -64,7 +64,7 @@ const Minter = (props) => {
       description: description,
       photourl: ipfsfileUrl,
       NFTurl: txHash,
-      owner: name,
+      owner: owner,
     };
 
     DataService.create(data)
@@ -89,6 +89,18 @@ const Minter = (props) => {
       });
   };
 
+ const handleowner = (event) => {
+  setowner(event.target.value)
+  if (event.target.value == 'v1'){
+    settoaddress("0x5c8e405B24D9ecd57Dc736726930e04f11C10Fb0")
+  }
+  if (event.target.value == 'v2'){
+    settoaddress("0xe68D2b5f8D1efd4043EC9c1dE020fA48906dB6ed")
+  }
+  else{
+    settoaddress("0x968E0325eD73671d78568B2ce64f6F3AF827386d")  
+  }
+}
 
   const changeHandler = (event) => {
   
@@ -243,12 +255,17 @@ const Minter = (props) => {
           onChange={(event) => setDescription(event.target.value)}
         />
 
-        <h2>🤔 settoaddress: </h2>
+
+
+{//todo delete to address by  hardcode
+}
+        <h2>🤔 setowner </h2>
         <input
           type="text"
-          placeholder="0x..."
-          onChange={(event) => settoaddress(event.target.value)}
+          placeholder="v1 or v2"
+          onChange={handleowner}
         />
+
       </form>
 
       <Button id="mintButton" onClick={onMintPressed}>

@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from "react";
 import DataService from "../services/MintedNFTService";
+
 //import { Link } from "react-router-dom";
 
 import {
   FacebookShareButton,
   } from "react-share"
 
-const ShowNFT = () => {
+const ShowNFT = ({ username }) => {
   const [events, setEvents] = useState([]);
   const [currentEvent, setCurrentEvent] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(-1);
   const [searchEventname, setSearchEventname] = useState("");
+
+
 
   useEffect(() => {
     retrieveEvents();
@@ -24,8 +27,17 @@ const ShowNFT = () => {
   const retrieveEvents = () => {
     DataService.getAll()
       .then(response => {
-        setEvents(response.data);
-        console.log(response.data);
+        if (username == "admin"){
+          setEvents(response.data);
+          console.log(response.data);
+        }
+        else{
+          setEvents(response.data);
+          console.log(username);
+          console.log(response.data);
+        }
+
+
       })
       .catch(e => {
         console.log(e);
@@ -88,7 +100,7 @@ const ShowNFT = () => {
         </div>
       </div>
       <div className="col-md-6">
-        <h4>NFT List</h4>
+        <h4>NFT owned by {username}</h4>
 
         <ul className="list-group">
           {events &&
@@ -124,8 +136,10 @@ const ShowNFT = () => {
           <div className="card-body">
             <h1 className="card-title pricing-card-title">{currentEvent.title}</h1>
             <ul className="list-unstyled mt-3 mb-4">
-              {currentEvent.description}
-
+              description: {currentEvent.description}
+            </ul>
+            <ul className="list-unstyled mt-3 mb-4">
+              owner:{currentEvent.owner}
             </ul>
             <img src={"https://gateway.pinata.cloud/ipfs/" +currentEvent.photourl} width={150} height={150}>
             </img>
