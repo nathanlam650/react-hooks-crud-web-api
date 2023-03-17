@@ -226,7 +226,7 @@ function App() {
               <Route path="/addorganization" element={<AddOrganization/>}/>
               <Route path="/Addimagetest" element={<Addimagetest/>}/>
               <Route path="/Minter" element={<Minter/>}/>
-              <Route path="/ShowNFT" element={<ShowNFT/>}/>
+              <Route path="/ShowNFT" element={<ShowNFT username={usernameInroot}/>}/>
               
               
               
@@ -334,7 +334,8 @@ function App() {
               <Route path="/addorganization" element={<AddOrganization/>}/>
               <Route path="/Addimagetest" element={<Addimagetest/>}/>
               <Route path="/Minter" element={<Minter/>}/>
-              <Route path="/ShowNFT" element={<ShowNFT/>}/>
+              <Route path="/ShowNFT" element={<ShowNFT username={usernameInroot}/>}/>
+
               
               
               
