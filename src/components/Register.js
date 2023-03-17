@@ -1,19 +1,54 @@
-//import React, { useState } from "react";
 import React, { useState, useEffect } from "react";
-//import { useParams, useNavigate } from 'react-router-dom';
 import VolunteerDataService from "../services/VolunteerService";
-import MetaMaskSDK from "@metamask/sdk";
+import {
+  connectWallet,
+  getCurrentWalletConnected,
+} from "../util/interact.js";
 
-new MetaMaskSDK({
-  useDeeplink: false,
-  communicationLayerPreference: "socket",
-});
+
 
 const Register = () => {
+
+  const [walletAddress, setWallet] = useState("");
+  const [status, setStatus] = useState("");
 
   const [chain, setChain] = useState("");
   const [account, setAccount] = useState("");
   const [response, setResponse] = useState("");
+
+  const connectWalletPressed = async () => {
+    const walletResponse = await connectWallet();
+    setStatus(walletResponse.status);
+    setWallet(walletResponse.address);
+    setAccount(walletResponse.address);
+    setVolunteer({... volunteer, ["ETHaccountid"]: walletResponse.address});
+        
+  };
+
+  function addWalletListener() {
+    if (window.ethereum) {
+      window.ethereum.on("accountsChanged", (accounts) => {
+        if (accounts.length > 0) {
+          setWallet(accounts[0]);
+          setStatus("👆🏽 Write a message in the text-field above.");
+        } else {
+          setWallet("");
+          setStatus("🦊 Connect to Metamask using the top right button.");
+        }
+      });
+    } else {
+      setStatus(
+        <p>
+          {" "}
+          🦊{" "}
+          <a target="_blank" href={`https://metamask.io/download.html`}>
+            You must install Metamask, a virtual Ethereum wallet, in your
+            browser.
+          </a>
+        </p>
+      );
+    }
+  }
 
   useEffect(() => {
     window.ethereum.on("chainChanged", (chain) => {
@@ -36,6 +71,7 @@ const Register = () => {
     ETHaccountid: ""
   };
   const [volunteer, setVolunteer] = useState(initialUserState);
+  
   //const [submitted, setSubmitted] = useState(false);
 
   const connect = () => {
@@ -94,6 +130,17 @@ const Register = () => {
   return (
     <div className="submit-form">
       
+      <button id="walletButton" onClick={connectWalletPressed}>
+        {walletAddress.length > 0 ? (
+          "Connected: " +
+          String(walletAddress).substring(0, 6) +
+          "..." +
+          String(walletAddress).substring(38)
+        ) : (
+          <span>Connect Wallet</span>
+        )}
+      </button>
+
 
       <button style={{ padding: 10, margin: 10 } } 
           onClick={connect}  
