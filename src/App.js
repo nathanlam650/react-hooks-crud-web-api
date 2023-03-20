@@ -251,7 +251,7 @@ function App() {
   
     );    
   }
-  if(usernameInroot=="v"){
+  if(usernameInroot=="v1" || usernameInroot=="v2"  ){
     return (
       <div style={{ 
         backgroundImage: `url('https://mdbootstrap.com/img/Photos/Others/images/76.jpg')`,

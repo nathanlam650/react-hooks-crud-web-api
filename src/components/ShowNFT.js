@@ -32,9 +32,12 @@ const ShowNFT = ({ username }) => {
           console.log(response.data);
         }
         else{
-          setEvents(response.data);
-          console.log(username);
-          console.log(response.data);
+          for (const dataloop of response.data){
+            if (dataloop.owner == username){
+              setEvents((events) => ([...events, dataloop]));
+            }}
+          //console.log(events);
+          //console.log(response.data);
         }
 
 
@@ -124,6 +127,7 @@ const ShowNFT = ({ username }) => {
           Remove All
         </button>
       </div>
+      {/*
       <div className="col-md-6">
         {currentEvent ? (
           
@@ -200,6 +204,7 @@ const ShowNFT = ({ username }) => {
           </div>
         )}
       </div>
+      */}
     </div>
   );
 };
