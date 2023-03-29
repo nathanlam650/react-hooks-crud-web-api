@@ -9,7 +9,7 @@ import DataService from "./services/MintedNFTService";
 
 import Button from 'react-bootstrap/Button';
 
-import picture1 from "./picture1.png"
+//import picture1 from "./picture1.png"
 
 require('dotenv').config();
 const key = process.env.REACT_APP_PINATA_KEY;

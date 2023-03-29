@@ -5,7 +5,7 @@ import DataService from "../services/MintedNFTService";
 
 import {
   FacebookShareButton,
-  } from "react-share"
+} from "react-share"
 
 const ShowNFT = ({ username }) => {
   const [events, setEvents] = useState([]);
@@ -27,15 +27,16 @@ const ShowNFT = ({ username }) => {
   const retrieveEvents = () => {
     DataService.getAll()
       .then(response => {
-        if (username == "admin"){
+        if (username == "admin") {
           setEvents(response.data);
           console.log(response.data);
         }
-        else{
-          for (const dataloop of response.data){
-            if (dataloop.owner == username){
+        else {
+          for (const dataloop of response.data) {
+            if (dataloop.owner == username) {
               setEvents((events) => ([...events, dataloop]));
-            }}
+            }
+          }
           //console.log(events);
           //console.log(response.data);
         }
@@ -81,9 +82,9 @@ const ShowNFT = ({ username }) => {
   };
 
   return (
-    <div className="list row">
+    <div className="list">
       <div className="col-md-8">
-        <div className="input-group mb-3">
+        <div className="row input-group mb-3">
           <input
             type="text"
             className="form-control"
@@ -101,63 +102,51 @@ const ShowNFT = ({ username }) => {
             </button>
           </div>
         </div>
-        <h4 className="display-4 fw-normal" >NFT owned by {username}</h4>
+        <h4 className="row display-4 fw-normal" >NFT owned by {username}</h4>
       </div>
 
 
-        
-    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
 
-          {events &&
-            events.map((event, index) => (
-            <div className="col">
+      <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+
+        {events &&
+          events.map((event, index) => (
+
             <div class="card mb-4 rounded-3 shadow-sm">
-                <img class="card-img-top" src={"https://gateway.pinata.cloud/ipfs/" +event.photourl} width={150} height={150}>
-                  </img>
-                 
-                <div className="card-header py-3">
-                  <h4 className="my-0 fw-normal">{event.title}</h4>
-                </div>
-                <div className="card-body">
-                  <h1 className="card-title pricing-card-title">{event.title}</h1>
-                  <ul className="list-unstyled mt-3 mb-4">
-                    description: {event.description}
-                  </ul>
-                  <ul className="list-unstyled mt-3 mb-4">
-                    owner:{event.owner}
-                  </ul>
-                 
-                  
-                  <div className="w-100 btn btn-lg btn-outline-primary">
-                    <FacebookShareButton url={"https://gateway.pinata.cloud/ipfs/" +event.photourl}  >
-                      Share
-                    </FacebookShareButton>
-                  </div>
+              <img class="card-img-top" src={"https://gateway.pinata.cloud/ipfs/" + event.photourl} width={150} height={150}>
+              </img>
+
+              <div className="card-header py-3">
+                <h4 className="my-0 fw-normal">{event.title}</h4>
+              </div>
+              <div className="card-body">
+                <h1 className="card-title pricing-card-title">{event.title}</h1>
+                <ul className="list-unstyled mt-3 mb-4">
+                  description: {event.description}
+                </ul>
+                <ul className="list-unstyled mt-3 mb-4">
+                  owner:{event.owner}
+                </ul>
+
+
+                <div className="w-100 btn btn-lg btn-outline-primary">
+                  <FacebookShareButton url={"https://gateway.pinata.cloud/ipfs/" + event.photourl}  >
+                    Share
+                  </FacebookShareButton>
                 </div>
               </div>
             </div>
-            /*
-              <li
-                className={
-                  "list-group-item " + (index === currentIndex ? "active" : "")
-                }
-                onClick={() => setActiveEvent(event, index)}
-                key={index}
-              >
-                {event.title}
-              </li>
-              */
-            ))}
-        </div>
+          ))}
+      </div>
 
 
-        
-        <button
-          className="m-3 btn btn-sm btn-danger"
-          onClick={removeAllEvents}
-        >
-          Remove All
-        </button>
+
+      <button
+        className="m-3 btn btn-sm btn-danger"
+        onClick={removeAllEvents}
+      >
+        Remove All
+      </button>
     </div>
   );
 };
