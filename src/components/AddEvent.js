@@ -8,6 +8,7 @@ const AddEvent = () => {
     description: "",
     time: "",
     place: "",
+    applicationurl: "",
     published: false
   };
   const [eventhook, setEvent] = useState(initialEventState);
@@ -24,7 +25,8 @@ const AddEvent = () => {
       title: eventhook.title,
       description: eventhook.description,
       place: eventhook.place,
-      time: eventhook.time
+      time: eventhook.time,
+      applicationurl: eventhook.applicationurl
     };
 
     DataService.create(data)
@@ -33,7 +35,8 @@ const AddEvent = () => {
           id: response.data.id,
           title: response.data.title,
           description: response.data.description,
-          published: response.data.published
+          published: response.data.published,
+          applicationurl: response.data.applicationurl
         });
         setSubmitted(true);
         console.log(response.data);
@@ -111,6 +114,18 @@ const AddEvent = () => {
             />
           </div>
 
+          <div className="form-group">
+            <label htmlFor="applicationurl">application Url</label>
+            <input
+              type="text"
+              className="form-control"
+              id="applicationurl"
+              required
+              value={eventhook.applicationurl}
+              onChange={handleInputChange}
+              name="applicationurl"
+            />
+          </div>
 
           <button onClick={saveEvent} className="btn btn-success">
             Submit

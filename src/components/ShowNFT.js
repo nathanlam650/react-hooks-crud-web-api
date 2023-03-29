@@ -101,13 +101,42 @@ const ShowNFT = ({ username }) => {
             </button>
           </div>
         </div>
+        <h4 className="display-4 fw-normal" >NFT owned by {username}</h4>
       </div>
-      <div className="col-md-6">
-        <h4>NFT owned by {username}</h4>
 
-        <ul className="list-group">
+
+        
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+
           {events &&
             events.map((event, index) => (
+            <div className="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+                <img class="card-img-top" src={"https://gateway.pinata.cloud/ipfs/" +event.photourl} width={150} height={150}>
+                  </img>
+                 
+                <div className="card-header py-3">
+                  <h4 className="my-0 fw-normal">{event.title}</h4>
+                </div>
+                <div className="card-body">
+                  <h1 className="card-title pricing-card-title">{event.title}</h1>
+                  <ul className="list-unstyled mt-3 mb-4">
+                    description: {event.description}
+                  </ul>
+                  <ul className="list-unstyled mt-3 mb-4">
+                    owner:{event.owner}
+                  </ul>
+                 
+                  
+                  <div className="w-100 btn btn-lg btn-outline-primary">
+                    <FacebookShareButton url={"https://gateway.pinata.cloud/ipfs/" +event.photourl}  >
+                      Share
+                    </FacebookShareButton>
+                  </div>
+                </div>
+              </div>
+            </div>
+            /*
               <li
                 className={
                   "list-group-item " + (index === currentIndex ? "active" : "")
@@ -117,94 +146,18 @@ const ShowNFT = ({ username }) => {
               >
                 {event.title}
               </li>
+              */
             ))}
-        </ul>
+        </div>
 
+
+        
         <button
           className="m-3 btn btn-sm btn-danger"
           onClick={removeAllEvents}
         >
           Remove All
         </button>
-      </div>
-      {/*
-      <div className="col-md-6">
-        {currentEvent ? (
-          
-          <div>
-            
-          <div className="card mb-4 rounded-3 shadow-sm">
-          <div className="card-header py-3">
-            <h4 className="my-0 fw-normal">{currentEvent.title}</h4>
-          </div>
-          <div className="card-body">
-            <h1 className="card-title pricing-card-title">{currentEvent.title}</h1>
-            <ul className="list-unstyled mt-3 mb-4">
-              description: {currentEvent.description}
-            </ul>
-            <ul className="list-unstyled mt-3 mb-4">
-              owner:{currentEvent.owner}
-            </ul>
-            <img src={"https://gateway.pinata.cloud/ipfs/" +currentEvent.photourl} width={150} height={150}>
-            </img>
-            
-            <div className="w-100 btn btn-lg btn-outline-primary">
-              <FacebookShareButton url={"https://gateway.pinata.cloud/ipfs/" +currentEvent.photourl}  >
-                Share
-              </FacebookShareButton>
-            </div>
-          </div>
-        </div>
-      
-            <h4>Event</h4>
-            <div>
-              <label>
-                <strong>Title:</strong>
-              </label>{" "}
-              {currentEvent.title}
-            </div>
-            <div>
-              <label>
-                <strong>Description:</strong>
-              </label>{" "}
-              {currentEvent.description}
-            </div>
-
-            <div>
-              <label>
-                <strong>url:</strong>
-              </label>{" "}
-              {currentEvent.NFTurl}
-            </div>
-
-            <div>
-              <label>
-                <strong>photo url:</strong>
-              </label>{" "}
-              {currentEvent.photourl}
-            </div>
-
-            <div>
-              <img src={"https://gateway.pinata.cloud/ipfs/" +currentEvent.photourl} width={150} height={150}>
-              </img>
-            </div>
-
-            <div>
-              <label>
-                <strong>Status:</strong>
-              </label>{" "}
-              {currentEvent.published ? "Published" : "Pending"}
-            </div>
-
-          </div>
-        ) : (
-          <div>
-            <br />
-            <p>Please click on a NFT...</p>
-          </div>
-        )}
-      </div>
-      */}
     </div>
   );
 };

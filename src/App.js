@@ -19,6 +19,9 @@ import WelcomePageOrganization from "./components/WelcomePageOrganization";
 import WelcomePageVolunteer from "./components/WelcomePageVolunteer";
 import Minter from "./Minter";
 import ShowNFT from "./components/ShowNFT";
+import love_1 from "./picture/love_1.png"
+
+
 //import SignIn from "./components/SignIn";
 //const MMSDK = new MetaMaskSDK(eth_requestAccounts);
 
@@ -48,9 +51,9 @@ function App() {
     }
     }>
 
-      <nav className="navbar navbar-expand navbar-dark bg-dark">
+      <nav className="navbar navbar-expand navbar-dark bg-secondary">
         <a href="/Register" className="navbar-brand">
-          VolunteerWeb3
+        Volunteer LOVE NFT
         </a>
 
         <div className="navbar-nav mr-auto">
@@ -84,21 +87,14 @@ function App() {
             </Link>
           </li>
 
-           
-          <li className="nav-item">
-            <Link to={"/Addimagetest"} className="nav-link">
-            Addimagetest
-            </Link>
-          </li>  
-
           <li className="nav-item">
             <Link to={"/Minter"} className="nav-link">
-            /Minter
+            Minter
             </Link>
           </li> 
           <li className="nav-item">
             <Link to={"/ShowNFT"} className="nav-link">
-            /ShowNFT
+            Show your NFT
             </Link>
           </li> 
           
@@ -106,7 +102,7 @@ function App() {
       </nav>
 
       <div className="container mt-3 has-bg-img" style={{ 
-        backgroundImage: `url("https://via.placeholder.com/500")` 
+        backgroundImage: `url("https://images.pexels.com/photos/1939485/pexels-photo-1939485.jpeg?auto=compress&cs=tinysrgb&w=600")` 
         }}>
       
 
@@ -146,22 +142,17 @@ function App() {
   if(usernameInroot=="o"){
     return (
       <div style={{ 
-        backgroundImage: `url('https://mdbootstrap.com/img/Photos/Others/images/76.jpg')`,
+        backgroundImage: `url('https://images.pexels.com/photos/952670/pexels-photo-952670.jpeg?auto=compress&cs=tinysrgb&w=600')`,
         height: `100vh`
       }
       }>
   
-        <nav className="navbar navbar-expand navbar-dark bg-dark">
+        <nav className="navbar navbar-expand navbar-dark bg-primary">
           <a href="/Register" className="navbar-brand">
-            VolunteerWeb3
+            Volunteer LOVE NFT
           </a>
   
           <div className="navbar-nav mr-auto">
-            <li className="nav-item">
-              <Link to={"/Register"} className="nav-link">
-                New register
-              </Link>
-            </li>
   
             <li className="nav-item">
               <Link to={"/addevent"} className="nav-link">
@@ -171,48 +162,26 @@ function App() {
   
             <li className="nav-item">
               <Link to={"/Eventslist"} className="nav-link">
-              Eventslist
+              Events List
               </Link>
             </li>
-                      
-            <li className="nav-item">
-              <Link to={"/Organizationlist"} className="nav-link">
-              Organizationlist
-              </Link>
-            </li>
-  
-            <li className="nav-item">
-              <Link to={"/addorganization"} className="nav-link">
-              addorganization
-              </Link>
-            </li>
-  
-             
-            <li className="nav-item">
-              <Link to={"/Addimagetest"} className="nav-link">
-              Addimagetest
-              </Link>
-            </li>  
-  
+    
             <li className="nav-item">
               <Link to={"/Minter"} className="nav-link">
-              /Minter
+              Mint NFT
               </Link>
             </li> 
+
             <li className="nav-item">
               <Link to={"/ShowNFT"} className="nav-link">
-              /ShowNFT
+              Show NFT that you minted
               </Link>
             </li> 
-  
-            
-            
-            
           </div>
-        </nav>
+        </nav>     
   
         <div className="container mt-3 has-bg-img" style={{ 
-          backgroundImage: `url("https://via.placeholder.com/500")` 
+          backgroundImage: `url("https://images.pexels.com/photos/1939485/pexels-photo-1939485.jpeg?auto=compress&cs=tinysrgb&w=600")` 
           }}>
         
   
@@ -227,143 +196,70 @@ function App() {
               <Route path="/Addimagetest" element={<Addimagetest/>}/>
               <Route path="/Minter" element={<Minter/>}/>
               <Route path="/ShowNFT" element={<ShowNFT username={usernameInroot}/>}/>
-              
-              
-              
-  
-              <Route path="/Vol/:id" element={<VolunteerUI />}>
-                <Route path="" element={<WelcomePageVolunteer/>}/>
-                <Route path="Eventslist" element={<EventList />}/>
-                <Route path="Organizationlist" element={<OrganizationList/>}/>
-              </Route>
-  
-              <Route path="Org/:id" element={<OrganizationUI/>}>
-                <Route path="" element={<WelcomePageOrganization/>} /> 
-                <Route path="Volunteerslist" element={<VolunteersList/>}/>
-                <Route path="addevent" element={<AddEvent/>}/>
-                <Route path="Eventslist" element={<EventList/>}/>
-                <Route path="Organizationlist" element={<OrganizationList/>}/>
-              </Route>
             </Routes>
             </div>
-  
+
         </div>
-  
+            
     );    
   }
   if(usernameInroot=="v1" || usernameInroot=="v2"  ){
     return (
       <div style={{ 
-        backgroundImage: `url('https://mdbootstrap.com/img/Photos/Others/images/76.jpg')`,
+        backgroundImage: `url('https://images.pexels.com/photos/952670/pexels-photo-952670.jpeg?auto=compress&cs=tinysrgb&w=600')`,
         height: `100vh`
       }
       }>
   
-        <nav className="navbar navbar-expand navbar-dark bg-dark">
-          <a href="/Register" className="navbar-brand">
-            VolunteerWeb3
+        <nav className="navbar navbar-expand navbar-dark bg-warning">
+          <a href="/ShowNFT" className="navbar-brand">
+            Volunteer LOVE NFT
           </a>
   
           <div className="navbar-nav mr-auto">
-            <li className="nav-item">
-              <Link to={"/Register"} className="nav-link">
-                New register
-              </Link>
-            </li>
-  
-            <li className="nav-item">
-              <Link to={"/addevent"} className="nav-link">
-                New event
-              </Link>
-            </li>
-  
+
             <li className="nav-item">
               <Link to={"/Eventslist"} className="nav-link">
-              Eventslist
+              Events List
               </Link>
             </li>
                       
             <li className="nav-item">
               <Link to={"/Organizationlist"} className="nav-link">
-              Organizationlist
+              Organization List
               </Link>
             </li>
-  
-            <li className="nav-item">
-              <Link to={"/addorganization"} className="nav-link">
-              addorganization
-              </Link>
-            </li>
-  
-             
-            <li className="nav-item">
-              <Link to={"/Addimagetest"} className="nav-link">
-              Addimagetest
-              </Link>
-            </li>  
-  
-            <li className="nav-item">
-              <Link to={"/Minter"} className="nav-link">
-              /Minter
-              </Link>
-            </li> 
+
             <li className="nav-item">
               <Link to={"/ShowNFT"} className="nav-link">
-              /ShowNFT
+              Show your own NFT
               </Link>
             </li> 
- 
-            
-            
-            
           </div>
         </nav>
   
         <div className="container mt-3 has-bg-img" style={{ 
-          backgroundImage: `url("https://via.placeholder.com/500")` 
+          backgroundImage: `url("https://images.pexels.com/photos/1939485/pexels-photo-1939485.jpeg?auto=compress&cs=tinysrgb&w=600")` 
           }}>
-        
-  
+
             <Routes>
               <Route path="/" element={<Register/>} /> //*mean show all events*/
-              <Route path="/Register" element={<Register/>} />
-              <Route path="/Volunteerslist" element={<VolunteersList/>}/>
-              <Route path="/addevent" element={<AddEvent/>}/>
               <Route path="/Eventslist" element={<EventList/>}/>
               <Route path="/Organizationlist" element={<OrganizationList/>}/>
-              <Route path="/addorganization" element={<AddOrganization/>}/>
-              <Route path="/Addimagetest" element={<Addimagetest/>}/>
-              <Route path="/Minter" element={<Minter/>}/>
               <Route path="/ShowNFT" element={<ShowNFT username={usernameInroot}/>}/>
-
-              
-              
-              
-  
-              <Route path="/Vol/:id" element={<VolunteerUI />}>
-                <Route path="" element={<WelcomePageVolunteer/>}/>
-                <Route path="Eventslist" element={<EventList />}/>
-                <Route path="Organizationlist" element={<OrganizationList/>}/>
-              </Route>
-  
-              <Route path="Org/:id" element={<OrganizationUI/>}>
-                <Route path="" element={<WelcomePageOrganization/>} /> 
-                <Route path="Volunteerslist" element={<VolunteersList/>}/>
-                <Route path="addevent" element={<AddEvent/>}/>
-                <Route path="Eventslist" element={<EventList/>}/>
-                <Route path="Organizationlist" element={<OrganizationList/>}/>
-              </Route>
             </Routes>
-            </div>
-  
-        </div>
-  
+            
+       </div>
+  </div>
     );    
   }
   else{
     return (<main class="form-signin w-100 m-auto">
+            <div className="container mt-3 has-bg-img" style={{ 
+        backgroundImage: `url("https://images.pexels.com/photos/1939485/pexels-photo-1939485.jpeg?auto=compress&cs=tinysrgb&w=600")` 
+        }}>
     <form>
-      <img class="mb-4" src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"/>
+      <img class="mb-4" src={love_1} alt="" width="100" height="100"/>
       <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
   
       <div class="form-floating">
@@ -377,14 +273,10 @@ function App() {
       </div>
         <button class="w-100 btn btn-lg btn-primary" type="submit"  onClick={handlelogin}>Sign in</button>
     </form>
+    </div>
   </main>
     );  
   }
 }
-//<Route path="/ViewActivities" element={<ViewActivities/>} />
-//todo
-
-//<Route path="/Login" element={<Login/>}/>
-//
 
 export default App;

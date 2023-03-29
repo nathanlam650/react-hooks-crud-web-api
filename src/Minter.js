@@ -54,6 +54,7 @@ const Minter = (props) => {
   const [theNFTurl, settheNFTurl] = useState("");
   const [toaddress, settoaddress] = useState("");
   const [owner, setowner] = useState("");
+  const [organization, setorganization] = useState("");
   
 
 
@@ -65,6 +66,7 @@ const Minter = (props) => {
       photourl: ipfsfileUrl,
       NFTurl: txHash,
       owner: owner,
+      organization: organization,
     };
 
     DataService.create(data)
@@ -90,6 +92,7 @@ const Minter = (props) => {
   };
 
  const handleowner = (event) => {
+  setorganization("o")
   setowner(event.target.value)
   if (event.target.value == 'v1'){
     settoaddress("0x5c8e405B24D9ecd57Dc736726930e04f11C10Fb0")
@@ -255,10 +258,6 @@ const Minter = (props) => {
           onChange={(event) => setDescription(event.target.value)}
         />
 
-
-
-{//todo delete to address by  hardcode
-}
         <h2>🤔 setowner </h2>
         <input
           type="text"
