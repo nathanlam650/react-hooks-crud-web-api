@@ -202,6 +202,7 @@ const Minter = (props) => {
 
   return (
     <div className="Minter">
+      <h4 className="row display-4 fw-normal" >NFT Minter</h4>
       <Button id="walletButton" onClick={connectWalletPressed}>
         {walletAddress.length > 0 ? (
           "Connected: " +
@@ -243,7 +244,7 @@ const Minter = (props) => {
         <p>
           {ipfsfileUrl}
         </p>
-        <h2>🤔 Name: </h2>
+        <h2>Name: </h2>
         <input
           type="text"
           placeholder="e.g. My first NFT!"
@@ -251,14 +252,21 @@ const Minter = (props) => {
         />
 
 
-        <h2>✍️ Description: </h2>
+        <h2>Description: </h2>
         <input
           type="text"
           placeholder="e.g. Even cooler than cryptokitties ;)"
           onChange={(event) => setDescription(event.target.value)}
         />
 
-        <h2>🤔 setowner </h2>
+        <h2> set owner's address </h2>
+        <input
+          type="text"
+          placeholder="0x...."
+          onChange={(event) => settoaddress(event.target.value)}
+        />
+
+        <h2>🤔 or you can set owner by his username here</h2>
         <input
           type="text"
           placeholder="v1 or v2"

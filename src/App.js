@@ -47,7 +47,9 @@ function App() {
   return (
     <div style={{ 
       backgroundImage: `url('https://mdbootstrap.com/img/Photos/Others/images/76.jpg')`,
-      height: `100vh`
+      height: `100vh`,
+      backgroundRepeat: "repeat",
+      overflow: "auto"
     }
     }>
 
@@ -143,7 +145,9 @@ function App() {
     return (
       <div style={{ 
         backgroundImage: `url('https://images.pexels.com/photos/952670/pexels-photo-952670.jpeg?auto=compress&cs=tinysrgb&w=600')`,
-        height: `100vh`
+        height: `100vh`,
+        backgroundRepeat: "repeat",
+        overflow: "auto"
       }
       }>
   
@@ -207,7 +211,9 @@ function App() {
     return (
       <div style={{ 
         backgroundImage: `url('https://images.pexels.com/photos/952670/pexels-photo-952670.jpeg?auto=compress&cs=tinysrgb&w=600')`,
-        height: `100vh`
+        height: `100vh`,
+        backgroundRepeat: "repeat",
+        overflow: "auto"
       }
       }>
   
@@ -256,7 +262,7 @@ function App() {
   else{
     return (<main class="form-signin w-100 m-auto">
             <div className="container mt-3 has-bg-img" style={{ 
-        backgroundImage: `url("https://images.pexels.com/photos/1939485/pexels-photo-1939485.jpeg?auto=compress&cs=tinysrgb&w=600")` 
+        backgroundImage: `url("https://images.pexels.com/photos/1939485/pexels-photo-1939485.jpeg?auto=compress&cs=tinysrgb&w=600")`
         }}>
     <form>
       <img class="mb-4" src={love_1} alt="" width="100" height="100"/>
