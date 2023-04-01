@@ -207,7 +207,7 @@ function App() {
             
     );    
   }
-  if(usernameInroot=="v1" || usernameInroot=="v2"  ){
+  if(usernameInroot=="Tom" || usernameInroot=="Roy"  ){
     return (
       <div style={{ 
         backgroundImage: `url('https://images.pexels.com/photos/952670/pexels-photo-952670.jpeg?auto=compress&cs=tinysrgb&w=600')`,
@@ -269,12 +269,12 @@ function App() {
       <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
   
       <div class="form-floating">
-        <input type="string" class="form-control" id="floatingInput" placeholder="o,v1,v2,admin" onChange={(event) => setinputusernameInroot(event.target.value)}/>
+        <input type="string" class="form-control" id="floatingInput" placeholder="o,Tom,Roy,admin" onChange={(event) => setinputusernameInroot(event.target.value)}/>
         <label for="floatingInput">Username</label>
       </div>
 
       <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="o,v1,v2" onChange={(event) => setinputpassword(event.target.value)}/>
+        <input type="password" class="form-control" id="floatingPassword" placeholder="o,Tom,Roy" onChange={(event) => setinputpassword(event.target.value)}/>
         <label for="floatingPassword">Password</label>
       </div>
         <button class="w-100 btn btn-lg btn-primary" type="submit"  onClick={handlelogin}>Sign in</button>

@@ -58,7 +58,7 @@ const Minter = (props) => {
   const [events, setEvents] = useState([]);
   const [currentEvent, setCurrentEvent] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(-1);
-  const [searchEventname, setSearchEventname] = useState("");
+
   
   useEffect(() => {
     retrieveEvents();
@@ -84,6 +84,7 @@ const Minter = (props) => {
   const setActiveEvent = (event, index) => {
     setCurrentEvent(event);
     setCurrentIndex(index);
+    setDescription(event.description)
   };
 
 
@@ -109,10 +110,10 @@ const Minter = (props) => {
  const handleowner = (event) => {
   setorganization("o")
   setowner(event.target.value)
-  if (event.target.value == 'v1'){
+  if (event.target.value == 'Tom'){
     settoaddress("0x5c8e405B24D9ecd57Dc736726930e04f11C10Fb0")
   }
-  if (event.target.value == 'v2'){
+  if (event.target.value == 'Roy'){
     settoaddress("0xe68D2b5f8D1efd4043EC9c1dE020fA48906dB6ed")
   }
   else{
@@ -204,12 +205,7 @@ const Minter = (props) => {
     const { success, status, txHash } = await mintNFT(ipfsfileUrl, name, description, toaddress);
     setStatus(status);
     if (success) {
-      //setName(name);
-      //setDescription(description);      
-      //console.log(status)
-      //console.log(txHash)
       settheNFTurl(txHash)
-      
       saveEvent(txHash)
     }
   };
@@ -315,11 +311,10 @@ const Minter = (props) => {
           </div>
           <input
           type="text"
-          placeholder={currentEvent.title ? currentEvent.title : "e.g. Even cooler than cryptokitties ;)"}
+          placeholder={currentEvent.title ? currentEvent.title : "e.g. a Prize for Tom"}
           onChange={(event) => setDescription(event.target.value)}
           />
         </div>
-
 
         <div class="input-group mb-3">
           <div class="input-group-prepend">
@@ -336,9 +331,7 @@ const Minter = (props) => {
           placeholder={currentEvent.title}
           onChange={handleowner}
           />
-        </div>
-
-        
+        </div>        
       </form>
 
       <Button id="mintButton" onClick={onMintPressed}>
@@ -348,8 +341,6 @@ const Minter = (props) => {
       <p id="status" style={{ color: "red" }}>
         {status}
       </p>
-
-
     </div>
   );
 };
