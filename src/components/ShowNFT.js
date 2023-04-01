@@ -27,7 +27,7 @@ const ShowNFT = ({ username }) => {
   const retrieveEvents = () => {
     DataService.getAll()
       .then(response => {
-        if (username == "admin") {
+        if (username == "admin" | username == "o") {
           setEvents(response.data);
           console.log(response.data);
         }
@@ -115,10 +115,6 @@ const ShowNFT = ({ username }) => {
             <div class="card mb-4 rounded-3 shadow-sm">
               <img class="card-img-top" src={"https://gateway.pinata.cloud/ipfs/" + event.photourl} width={150} height={150}>
               </img>
-
-              <div className="card-header py-3">
-                <h4 className="my-0 fw-normal">{event.title}</h4>
-              </div>
               <div className="card-body">
                 <h1 className="card-title pricing-card-title">{event.title}</h1>
                 <ul className="list-unstyled mt-3 mb-4">

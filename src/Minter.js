@@ -55,8 +55,36 @@ const Minter = (props) => {
   const [toaddress, settoaddress] = useState("");
   const [owner, setowner] = useState("");
   const [organization, setorganization] = useState("");
+  const [events, setEvents] = useState([]);
+  const [currentEvent, setCurrentEvent] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(-1);
+  const [searchEventname, setSearchEventname] = useState("");
   
+  useEffect(() => {
+    retrieveEvents();
+  }, []);
 
+  const retrieveEvents = () => {
+    DataService.getAll()
+      .then(response => {
+        setEvents(response.data);
+        console.log(response.data);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  };
+
+  const refreshList = () => {
+    retrieveEvents();
+    setCurrentEvent(null);
+    setCurrentIndex(-1);
+  };
+
+  const setActiveEvent = (event, index) => {
+    setCurrentEvent(event);
+    setCurrentIndex(index);
+  };
 
 
   const saveEvent = (txHash) => {
@@ -71,19 +99,6 @@ const Minter = (props) => {
 
     DataService.create(data)
       .then(response => {
-        /*
-        setNFTdata({
-          id: response.data.id,
-          title: response.data.title,
-          description: response.data.description,
-          published: response.data.published,
-          hash: response.data.hash,
-          photourl: response.data.photourl,
-          owner: response.data.owner,
-        });
-
-        setSubmitted(true);
-        */
         console.log(response.data);
       })
       .catch(e => {
@@ -215,6 +230,38 @@ const Minter = (props) => {
       </Button>
 
       <br></br>
+
+      <Table striped bordered hover variant="primary">
+        <thead>
+          <tr>
+            <th>Event Name</th>
+            <th>Time</th>
+            <th>Place</th>
+            <th>Description</th>
+            <th>event application link</th>
+          </tr>
+        </thead>
+        <tbody>
+        {events &&
+              events.map((event, index) => (
+                <tr
+                  //className={
+                  //  "list-group-item " + (index === currentIndex ? "active" : "")
+                  //}
+                  onClick={() => setActiveEvent(event, index)}
+                  key={index}
+                >
+                <td>{event.title}</td>
+                <td>{event.time}</td>
+                <td>{event.place}</td>
+                <td>{event.description}</td>
+                <td>{event.applicationurl}</td>
+                </tr>
+              ))}
+        </tbody>
+      </Table>
+      <br></br>
+
       <h1 id="title">🧙‍♂️ Alchemy NFT Minter</h1>
       <p>
         1.Simply upload a file, then press "upload. And wait a success sign and ipfs url. 
@@ -231,48 +278,67 @@ const Minter = (props) => {
       </div>
 
       <div>
-        <img src={"https://gateway.pinata.cloud/ipfs/QmbMmNdghdMqHpA1bxuswHkrmSSguMBoavjHwwQiY9DDTi"} 
-          alt="QmbMmNdghdMqHpA1bxuswHkrmSSguMBoavjHwwQiY9DDTi"
+        <img src={"https://gateway.pinata.cloud/ipfs/QmcGyxtWBA3JoE4AaiwavtZub1kzL3Xg5Q597HMQ5BTE1r"} 
+          alt="QmcGyxtWBA3JoE4AaiwavtZub1kzL3Xg5Q597HMQ5BTE1r"
           onClick={handleipfsdefaultpicture}
           height={150}
           width={150}
           />
-      </div>
+        <img src={"https://gateway.pinata.cloud/ipfs/QmNvrdRyNCzojBmwb2CDVMyzH5CxqhwH864ibVETyqDRSa"} 
+        alt="QmNvrdRyNCzojBmwb2CDVMyzH5CxqhwH864ibVETyqDRSa"
+        onClick={handleipfsdefaultpicture}
+        height={150}
+        width={150}
+        />
+      </div>      
 
       <form>
         <h2>🖼Url now:</h2>
         <p>
           {ipfsfileUrl}
         </p>
-        <h2>Name: </h2>
-        <input
-          type="text"
-          placeholder="e.g. My first NFT!"
-          onChange={(event) => setName(event.target.value)}
-        />
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Name</span>
+          </div>
+          <input
+            type="text"
+            placeholder="e.g. My first NFT!"
+            onChange={(event) => setName(event.target.value)}
+          />
+        </div>
 
-
-        <h2>Description: </h2>
-        <input
+        
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Description</span>
+          </div>
+          <input
           type="text"
-          placeholder="e.g. Even cooler than cryptokitties ;)"
+          placeholder={currentEvent.title ? currentEvent.title : "e.g. Even cooler than cryptokitties ;)"}
           onChange={(event) => setDescription(event.target.value)}
-        />
+          />
+        </div>
 
-        <h2> set owner's address </h2>
-        <input
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Owner Address or username</span>
+          </div>
+          <input
           type="text"
-          placeholder="0x...."
+          placeholder={toaddress? toaddress: "0x..."}
           onChange={(event) => settoaddress(event.target.value)}
-        />
+          />
 
-        <h2>🤔 or you can set owner by his username here</h2>
-        <input
+          <input
           type="text"
-          placeholder="v1 or v2"
+          placeholder={currentEvent.title}
           onChange={handleowner}
-        />
+          />
+        </div>
 
+        
       </form>
 
       <Button id="mintButton" onClick={onMintPressed}>

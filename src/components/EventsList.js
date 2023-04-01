@@ -85,9 +85,9 @@ const EventList = () => {
         </div>
       </div>
       <div className="col-md-6">
-        <h4>Event List</h4>
+        <h4>Volunteer Event List</h4>
 
-        <ul className="list-group">
+        {/*<ul className="list-group">
           {events &&
             events.map((event, index) => (
               <li
@@ -100,15 +100,11 @@ const EventList = () => {
                 {event.title}
               </li>
             ))}
-        </ul>
+              </ul>*/}
 
-        <button
-          className="m-3 btn btn-sm btn-danger"
-          onClick={removeAllEvents}
-        >
-          Remove All
-        </button>
+
       </div>
+      {/*
       <div className="col-md-6">
         {currentEvent ? (
           <div>
@@ -161,13 +157,15 @@ const EventList = () => {
           </div>
         )}
       </div>
+      */}
       <Table striped bordered hover variant="primary">
         <thead>
           <tr>
-            <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Username</th>
+            <th>Event Name</th>
+            <th>Time</th>
+            <th>Place</th>
+            <th>Description</th>
+            <th>event application link</th>
           </tr>
         </thead>
         <tbody>
@@ -181,14 +179,20 @@ const EventList = () => {
                   key={index}
                 >
                 <td>{event.title}</td>
-                  
                 <td>{event.time}</td>
                 <td>{event.place}</td>
-                <td>{event.place}</td>
+                <td>{event.description}</td>
+                <td>{event.applicationurl}</td>
                 </tr>
               ))}
         </tbody>
       </Table>
+      <button
+          className="m-3 btn btn-sm btn-danger"
+          onClick={removeAllEvents}
+        >
+          Remove All
+        </button>
     </div>
   );
 };
