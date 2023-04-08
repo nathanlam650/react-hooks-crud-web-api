@@ -6,10 +6,10 @@ import {
 } from "./util/interact.js";
 import axios from "axios"
 import DataService from "./services/MintedNFTService";
+import DataServiceEvent from "./services/EventService.js";
 
 import Button from 'react-bootstrap/Button';
-
-//import picture1 from "./picture1.png"
+import Table from 'react-bootstrap/Table';
 
 require('dotenv').config();
 const key = process.env.REACT_APP_PINATA_KEY;
@@ -51,21 +51,20 @@ const Minter = (props) => {
   const [description, setDescription] = useState("");
   const [ipfsfileUrl, setipfsfileUrl] = useState("");
   const [selectedFile, setSelectedFile] = useState();
-  const [theNFTurl, settheNFTurl] = useState("");
+  //const [theNFTurl, settheNFTurl] = useState("");
   const [toaddress, settoaddress] = useState("");
   const [owner, setowner] = useState("");
   const [organization, setorganization] = useState("");
   const [events, setEvents] = useState([]);
   const [currentEvent, setCurrentEvent] = useState(null);
-  const [currentIndex, setCurrentIndex] = useState(-1);
+  //const [currentIndex, setCurrentIndex] = useState(-1);
 
-  
   useEffect(() => {
     retrieveEvents();
   }, []);
 
   const retrieveEvents = () => {
-    DataService.getAll()
+    DataServiceEvent.getAll()
       .then(response => {
         setEvents(response.data);
         console.log(response.data);
@@ -78,13 +77,16 @@ const Minter = (props) => {
   const refreshList = () => {
     retrieveEvents();
     setCurrentEvent(null);
-    setCurrentIndex(-1);
+    //setCurrentIndex(-1);
   };
 
   const setActiveEvent = (event, index) => {
     setCurrentEvent(event);
-    setCurrentIndex(index);
-    setDescription(event.description)
+    //setCurrentIndex(index);
+    var des = event.title + "in" + event.place + "on" + event.time
+    setDescription(des)
+    var tit =  "Prize for" + event.title
+    setName(des)
   };
 
 
@@ -113,7 +115,7 @@ const Minter = (props) => {
   if (event.target.value == 'Tom'){
     settoaddress("0x5c8e405B24D9ecd57Dc736726930e04f11C10Fb0")
   }
-  if (event.target.value == 'Roy'){
+  else if (event.target.value == 'Roy'){
     settoaddress("0xe68D2b5f8D1efd4043EC9c1dE020fA48906dB6ed")
   }
   else{
@@ -205,7 +207,7 @@ const Minter = (props) => {
     const { success, status, txHash } = await mintNFT(ipfsfileUrl, name, description, toaddress);
     setStatus(status);
     if (success) {
-      settheNFTurl(txHash)
+      //settheNFTurl(txHash)
       saveEvent(txHash)
     }
   };
@@ -227,23 +229,19 @@ const Minter = (props) => {
 
       <br></br>
 
-      <Table striped bordered hover variant="primary">
+      <Table striped bordered hover variant="primary" className="rounded">
         <thead>
           <tr>
             <th>Event Name</th>
             <th>Time</th>
             <th>Place</th>
             <th>Description</th>
-            <th>event application link</th>
           </tr>
         </thead>
         <tbody>
         {events &&
               events.map((event, index) => (
                 <tr
-                  //className={
-                  //  "list-group-item " + (index === currentIndex ? "active" : "")
-                  //}
                   onClick={() => setActiveEvent(event, index)}
                   key={index}
                 >
@@ -251,7 +249,6 @@ const Minter = (props) => {
                 <td>{event.time}</td>
                 <td>{event.place}</td>
                 <td>{event.description}</td>
-                <td>{event.applicationurl}</td>
                 </tr>
               ))}
         </tbody>
@@ -299,7 +296,7 @@ const Minter = (props) => {
           </div>
           <input
             type="text"
-            placeholder="e.g. My first NFT!"
+            placeholder="e.g. Prize for Tom"
             onChange={(event) => setName(event.target.value)}
           />
         </div>
@@ -311,7 +308,8 @@ const Minter = (props) => {
           </div>
           <input
           type="text"
-          placeholder={currentEvent.title ? currentEvent.title : "e.g. a Prize for Tom"}
+          placeholder={currentEvent ? currentEvent.title : "e.g. a Prize for Tom for working in 23/3 in sunny beach"}
+          value={description}
           onChange={(event) => setDescription(event.target.value)}
           />
         </div>
@@ -323,12 +321,14 @@ const Minter = (props) => {
           <input
           type="text"
           placeholder={toaddress? toaddress: "0x..."}
+          value={toaddress}
           onChange={(event) => settoaddress(event.target.value)}
           />
 
           <input
           type="text"
-          placeholder={currentEvent.title}
+          placeholder={currentEvent ? currentEvent.title: "owner"}
+          value={owner}
           onChange={handleowner}
           />
         </div>        
