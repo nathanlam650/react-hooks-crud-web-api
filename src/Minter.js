@@ -85,7 +85,7 @@ const Minter = (props) => {
     //setCurrentIndex(index);
     var des = event.title + "in" + event.place + "on" + event.time
     setDescription(des)
-    var tit =  "Prize for" + event.title
+    //var tit =  "Prize for" + event.title
     setName(des)
   };
 
@@ -112,10 +112,10 @@ const Minter = (props) => {
  const handleowner = (event) => {
   setorganization("o")
   setowner(event.target.value)
-  if (event.target.value == 'Tom'){
+  if (event.target.value === 'Tom'){
     settoaddress("0x5c8e405B24D9ecd57Dc736726930e04f11C10Fb0")
   }
-  else if (event.target.value == 'Roy'){
+  else if (event.target.value === 'Roy'){
     settoaddress("0xe68D2b5f8D1efd4043EC9c1dE020fA48906dB6ed")
   }
   else{
@@ -153,11 +153,11 @@ const Minter = (props) => {
 
     console.log((await IPFSfilerespond).success)
         
-    if ((await IPFSfilerespond).success == true){
+    if ((await IPFSfilerespond).success === true){
       setipfsfileUrl((await IPFSfilerespond).pinataUrl)
     }
     else
-    if ((await IPFSfilerespond).success == false){
+    if ((await IPFSfilerespond).success === false){
       setipfsfileUrl("hard_code_one_later_for_error_in_demo")
     }
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
@@ -43,7 +43,7 @@ function App() {
     setusernameInroot(inputusernameInroot);
   };
 
-  if (usernameInroot=="admin"){
+  if (usernameInroot==="admin"){
   return (
     <div style={{ 
       backgroundImage: `url('https://mdbootstrap.com/img/Photos/Others/images/76.jpg')`,
@@ -141,7 +141,7 @@ function App() {
 
   );
   }
-  if(usernameInroot=="o"){
+  if(usernameInroot==="o"){
     return (
       <div style={{ 
         backgroundImage: `url('https://images.pexels.com/photos/952670/pexels-photo-952670.jpeg?auto=compress&cs=tinysrgb&w=600')`,
@@ -207,7 +207,7 @@ function App() {
             
     );    
   }
-  if(usernameInroot=="Tom" || usernameInroot=="Roy"  ){
+  if(usernameInroot==="Tom" || usernameInroot==="Roy"  ){
     return (
       <div style={{ 
         backgroundImage: `url('https://images.pexels.com/photos/952670/pexels-photo-952670.jpeg?auto=compress&cs=tinysrgb&w=600')`,
