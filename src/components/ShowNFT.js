@@ -9,8 +9,8 @@ import {
 
 const ShowNFT = ({ username }) => {
   const [events, setEvents] = useState([]);
-  const [currentEvent, setCurrentEvent] = useState(null);
-  const [currentIndex, setCurrentIndex] = useState(-1);
+  //const [currentEvent, setCurrentEvent] = useState(null);
+  //const [currentIndex, setCurrentIndex] = useState(-1);
   const [searchEventname, setSearchEventname] = useState("");
 
 
@@ -27,13 +27,13 @@ const ShowNFT = ({ username }) => {
   const retrieveEvents = () => {
     DataService.getAll()
       .then(response => {
-        if (username == "admin" | username == "o") {
+        if (username === "admin" | username === "o") {
           setEvents(response.data);
           console.log(response.data);
         }
         else {
           for (const dataloop of response.data) {
-            if (dataloop.owner == username) {
+            if (dataloop.owner === username) {
               setEvents((events) => ([...events, dataloop]));
             }
           }
@@ -50,14 +50,14 @@ const ShowNFT = ({ username }) => {
 
   const refreshList = () => {
     retrieveEvents();
-    setCurrentEvent(null);
-    setCurrentIndex(-1);
+    //setCurrentEvent(null);
+    //setCurrentIndex(-1);
   };
 
-  const setActiveEvent = (event, index) => {
+  /*const setActiveEvent = (event, index) => {
     setCurrentEvent(event);
     setCurrentIndex(index);
-  };
+  };*/
 
   const removeAllEvents = () => {
     DataService.removeAll()
@@ -113,7 +113,7 @@ const ShowNFT = ({ username }) => {
           events.map((event, index) => (
 
             <div class="card mb-4 rounded-3 shadow-sm">
-              <img class="card-img-top" src={"https://gateway.pinata.cloud/ipfs/" + event.photourl} width={150} height={150}>
+              <img class="card-img-top" src={"https://gateway.pinata.cloud/ipfs/" + event.photourl} width={150} height={150} alt="pinata image">
               </img>
               <div className="card-body">
                 <h1 className="card-title pricing-card-title">{event.title}</h1>

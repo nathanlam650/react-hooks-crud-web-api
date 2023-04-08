@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import VolunteerDataService from "../services/VolunteerService";
 import {
   connectWallet,
-  getCurrentWalletConnected,
+  //getCurrentWalletConnected,
 } from "../util/interact.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -12,7 +12,6 @@ const Register = () => {
 
   const [walletAddress, setWallet] = useState("");
   const [status, setStatus] = useState("");
-
   const [chain, setChain] = useState("");
   const [account, setAccount] = useState("");
   const [response, setResponse] = useState("");
