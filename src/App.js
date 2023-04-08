@@ -12,11 +12,6 @@ import EventList from "./components/EventsList";
 import OrganizationList from "./components/OrganizationList";
 import AddOrganization from "./components/AddOrganization";
 //import MetamaskSDKApp from "./components/MetamaskSDKApp";
-import Addimagetest from "./components/Addimagetest";
-import VolunteerUI from "./volunteerUI";
-import OrganizationUI from "./OrganizationUI";
-import WelcomePageOrganization from "./components/WelcomePageOrganization";
-import WelcomePageVolunteer from "./components/WelcomePageVolunteer";
 import Minter from "./Minter";
 import ShowNFT from "./components/ShowNFT";
 import love_1 from "./picture/love_1.png"
@@ -116,24 +111,8 @@ function App() {
             <Route path="/Eventslist" element={<EventList/>}/>
             <Route path="/Organizationlist" element={<OrganizationList/>}/>
             <Route path="/addorganization" element={<AddOrganization/>}/>
-            <Route path="/Addimagetest" element={<Addimagetest/>}/>
             <Route path="/Minter" element={<Minter/>}/>              
             <Route path="/ShowNFT" element={<ShowNFT username={usernameInroot}/>}/>
-            
-
-            <Route path="/Vol/:id" element={<VolunteerUI />}>
-              <Route path="" element={<WelcomePageVolunteer/>}/>
-              <Route path="Eventslist" element={<EventList />}/>
-              <Route path="Organizationlist" element={<OrganizationList/>}/>
-            </Route>
-
-            <Route path="Org/:id" element={<OrganizationUI/>}>
-              <Route path="" element={<WelcomePageOrganization/>} /> 
-              <Route path="Volunteerslist" element={<VolunteersList/>}/>
-              <Route path="addevent" element={<AddEvent/>}/>
-              <Route path="Eventslist" element={<EventList/>}/>
-              <Route path="Organizationlist" element={<OrganizationList/>}/>
-            </Route>
           </Routes>
           </div>
 
@@ -197,7 +176,6 @@ function App() {
               <Route path="/Eventslist" element={<EventList/>}/>
               <Route path="/Organizationlist" element={<OrganizationList/>}/>
               <Route path="/addorganization" element={<AddOrganization/>}/>
-              <Route path="/Addimagetest" element={<Addimagetest/>}/>
               <Route path="/Minter" element={<Minter/>}/>
               <Route path="/ShowNFT" element={<ShowNFT username={usernameInroot}/>}/>
             </Routes>
