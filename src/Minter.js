@@ -215,7 +215,7 @@ const Minter = (props) => {
 
   return (
     <div className="Minter">
-      <h4 className="row display-4 fw-normal" >NFT Minter</h4>
+      <h4 className="row display-4 fw-normal" > NFT Minter</h4>
       <Button id="walletButton" onClick={connectWalletPressed}>
         {walletAddress.length > 0 ? (
           "Connected: " +
@@ -229,7 +229,7 @@ const Minter = (props) => {
 
       <br></br>
 
-      <Table striped bordered hover variant="primary" className="rounded">
+      <Table striped bordered hover variant="primary" className="rounded-3">
         <thead>
           <tr>
             <th>Event Name</th>
@@ -255,10 +255,10 @@ const Minter = (props) => {
       </Table>
       <br></br>
 
-      <h1 id="title">🧙‍♂️ Alchemy NFT Minter</h1>
       <p>
-        1.Simply upload a file, then press "upload. And wait a success sign and ipfs url. 
-        2.After that, write name, and description, then press "Mint."
+        1.Pick a volunteer event in tha above table, then 
+        2.Simply upload a file, then press "upload. And wait a success sign and ipfs url. 
+        3.After that, write name, and description, then press "Mint."
       </p>
       
       <div className="IPFSFileupolad">

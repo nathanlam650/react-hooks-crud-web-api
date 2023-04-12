@@ -24,7 +24,7 @@ const Register = () => {
     setVolunteer({... volunteer, ["ETHaccountid"]: walletResponse.address});
         
   };
-
+  /*
   function addWalletListener() {
     if (window.ethereum) {
       window.ethereum.on("accountsChanged", (accounts) => {
@@ -49,7 +49,8 @@ const Register = () => {
       );
     }
   }
-
+  */
+ 
   useEffect(() => {
     window.ethereum.on("chainChanged", (chain) => {
       console.log(chain);
@@ -73,7 +74,8 @@ const Register = () => {
   const [volunteer, setVolunteer] = useState(initialUserState);
   
   //const [submitted, setSubmitted] = useState(false);
-
+  
+  /*
   const connect = () => {
     //ethereum.request(args: RequestArguments): Promise<unknown>;
     
@@ -98,7 +100,7 @@ const Register = () => {
       //console.log("t2",volunteer, account,window.ethereum.selectedAddress)
         
     };
-
+  */
   const showvolunteer = event => {
     console.log(volunteer)
   };

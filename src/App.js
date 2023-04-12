@@ -49,8 +49,8 @@ function App() {
     }>
 
       <nav className="navbar navbar-expand navbar-dark bg-secondary">
-        <a href="/Register" className="navbar-brand">
-        Volunteer LOVE NFT
+        <a href="/Register" className="navbar-brand h2">
+        FIXPRE
         </a>
 
         <div className="navbar-nav mr-auto">
@@ -131,8 +131,8 @@ function App() {
       }>
   
         <nav className="navbar navbar-expand navbar-dark bg-primary">
-          <a href="/Register" className="navbar-brand">
-            Volunteer LOVE NFT
+          <a href="/Register" className="navbar-brand h2">
+          FIXPRE
           </a>
   
           <div className="navbar-nav mr-auto">
@@ -196,8 +196,8 @@ function App() {
       }>
   
         <nav className="navbar navbar-expand navbar-dark bg-warning">
-          <a href="/ShowNFT" className="navbar-brand">
-            Volunteer LOVE NFT
+          <a href="/" className="navbar-brand">
+            FIXPRE
           </a>
   
           <div className="navbar-nav mr-auto">

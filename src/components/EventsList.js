@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import DataService from "../services/EventService";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import Table from 'react-bootstrap/Table';
 
 const EventList = () => {
   const [events, setEvents] = useState([]);
-  const [currentEvent, setCurrentEvent] = useState(null);
-  const [currentIndex, setCurrentIndex] = useState(-1);
+  //const [currentEvent, setCurrentEvent] = useState(null);
+  //const [currentIndex, setCurrentIndex] = useState(-1);
   const [searchEventname, setSearchEventname] = useState("");
 
   useEffect(() => {
@@ -31,13 +31,13 @@ const EventList = () => {
 
   const refreshList = () => {
     retrieveEvents();
-    setCurrentEvent(null);
-    setCurrentIndex(-1);
+    //setCurrentEvent(null);
+    //setCurrentIndex(-1);
   };
 
   const setActiveEvent = (event, index) => {
-    setCurrentEvent(event);
-    setCurrentIndex(index);
+    //setCurrentEvent(event);
+    //setCurrentIndex(index);
   };
 
   const removeAllEvents = () => {
