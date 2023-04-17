@@ -13,8 +13,6 @@ const ShowNFT = ({ username }) => {
   //const [currentIndex, setCurrentIndex] = useState(-1);
   const [searchEventname, setSearchEventname] = useState("");
 
-
-
   useEffect(() => {
     retrieveEvents();
   }, []);

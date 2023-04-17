@@ -29,7 +29,6 @@ const pinFILEToIPFS = async(JSONBody) => {
               success: false,
               message: error.message,
           }
-         
       });
 };
 

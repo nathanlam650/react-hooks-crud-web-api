@@ -75,3 +75,11 @@ yarn start
 Open [http://localhost:8081](http://localhost:8081) to view it in the browser.
 
 The page will reload if you make edits.
+
+
+Some code of this project is copy from:
+https://github.com/bezkoder/react-hooks-crud-web-api
+https://github.com/bezkoder/node-express-mongodb
+https://ethereum.org/en/developers/tutorials/how-to-write-and-deploy-an-nft/
+https://docs.pinata.cloud/pinata-api/ 
+

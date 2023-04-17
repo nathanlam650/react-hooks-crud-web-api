@@ -264,9 +264,6 @@ const Minter = (props) => {
       <div className="IPFSFileupolad">
         <label className="form-label">Choose File</label>
         <input type="file"  onChange={changeHandler}/>
-        
-        
-
         <Button onClick={handleSubmission}>upload</Button>
       </div>
 

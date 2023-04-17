@@ -11,11 +11,9 @@ import AddEvent from "./components/AddEvent";
 import EventList from "./components/EventsList";
 import OrganizationList from "./components/OrganizationList";
 import AddOrganization from "./components/AddOrganization";
-//import MetamaskSDKApp from "./components/MetamaskSDKApp";
 import Minter from "./Minter";
 import ShowNFT from "./components/ShowNFT";
 import love_1 from "./picture/love_1.png"
-
 
 //import SignIn from "./components/SignIn";
 //const MMSDK = new MetaMaskSDK(eth_requestAccounts);
@@ -25,6 +23,14 @@ import love_1 from "./picture/love_1.png"
 //ethereum.request({ method: 'eth_requestAccounts', params: [] });
 
 //<img class="bg-img" src="https://toruskit.com/assets/img/util/gray-w.svg"/>
+
+/*
+some code of this project is copy from:
+https://github.com/bezkoder/react-hooks-crud-web-api
+https://github.com/bezkoder/node-express-mongodb
+https://ethereum.org/en/developers/tutorials/how-to-write-and-deploy-an-nft/
+https://docs.pinata.cloud/pinata-api/ 
+*/
 
 
 function App() {
@@ -56,7 +62,13 @@ function App() {
         <div className="navbar-nav mr-auto">
           <li className="nav-item">
             <Link to={"/Register"} className="nav-link">
-              New register
+              NEW Volunteer
+            </Link>
+          </li>
+
+          <li className="nav-item">
+            <Link to={"/addorganization"} className="nav-link">
+            NEW organization
             </Link>
           </li>
 
@@ -78,17 +90,13 @@ function App() {
             </Link>
           </li>
 
-          <li className="nav-item">
-            <Link to={"/addorganization"} className="nav-link">
-            addorganization
-            </Link>
-          </li>
 
           <li className="nav-item">
             <Link to={"/Minter"} className="nav-link">
             Minter
             </Link>
           </li> 
+
           <li className="nav-item">
             <Link to={"/ShowNFT"} className="nav-link">
             Show your NFT
@@ -99,12 +107,11 @@ function App() {
       </nav>
 
       <div className="container mt-3 has-bg-img" style={{ 
-        backgroundImage: `url("https://images.pexels.com/photos/1939485/pexels-photo-1939485.jpeg?auto=compress&cs=tinysrgb&w=600")` 
+        backgroundImage: `url("https://www.marshallsindia.com/ImageBuckets/ItemImages/ZA%201903.jpg?id=75")` 
         }}>
-      
 
           <Routes>
-            <Route path="/" element={<Register/>} /> //*mean show all events*/
+            <Route path="/" element={<ShowNFT username={usernameInroot}/>} /> //*mean show all events*/
             <Route path="/Register" element={<Register/>} />
             <Route path="/Volunteerslist" element={<VolunteersList/>}/>
             <Route path="/addevent" element={<AddEvent/>}/>
@@ -123,7 +130,7 @@ function App() {
   if(usernameInroot==="o"){
     return (
       <div style={{ 
-        backgroundImage: `url('https://images.pexels.com/photos/952670/pexels-photo-952670.jpeg?auto=compress&cs=tinysrgb&w=600')`,
+        backgroundImage: `url('https://media.istockphoto.com/id/1212342896/vector/abstract-hexagon-wallpaper-white-background-3d-vector-illustration.jpg?s=170667a&w=0&k=20&c=kMIaYjtkjoLGAyq7BBLfz9SrJryy0uIGOrfmi6-ILEA=')`,
         height: `100vh`,
         backgroundRepeat: "repeat",
         overflow: "auto"
@@ -164,12 +171,12 @@ function App() {
         </nav>     
   
         <div className="container mt-3 has-bg-img" style={{ 
-          backgroundImage: `url("https://images.pexels.com/photos/1939485/pexels-photo-1939485.jpeg?auto=compress&cs=tinysrgb&w=600")` 
+          backgroundImage: `url("https://www.marshallsindia.com/ImageBuckets/ItemImages/ZA%201903.jpg?id=75")` 
           }}>
         
   
             <Routes>
-              <Route path="/" element={<Register/>} /> //*mean show all events*/
+              <Route path="/" element={<ShowNFT username={usernameInroot}/>}/> //*mean show all events*/
               <Route path="/Register" element={<Register/>} />
               <Route path="/Volunteerslist" element={<VolunteersList/>}/>
               <Route path="/addevent" element={<AddEvent/>}/>
@@ -185,10 +192,10 @@ function App() {
             
     );    
   }
-  if(usernameInroot==="Tom" || usernameInroot==="Roy"  ){
+  if(usernameInroot==="Tom" || usernameInroot==="Roy" ){
     return (
       <div style={{ 
-        backgroundImage: `url('https://images.pexels.com/photos/952670/pexels-photo-952670.jpeg?auto=compress&cs=tinysrgb&w=600')`,
+        backgroundImage: `url('https://media.istockphoto.com/id/1212342896/vector/abstract-hexagon-wallpaper-white-background-3d-vector-illustration.jpg?s=170667a&w=0&k=20&c=kMIaYjtkjoLGAyq7BBLfz9SrJryy0uIGOrfmi6-ILEA=')`,
         height: `100vh`,
         backgroundRepeat: "repeat",
         overflow: "auto"
@@ -223,11 +230,11 @@ function App() {
         </nav>
   
         <div className="container mt-3 has-bg-img" style={{ 
-          backgroundImage: `url("https://images.pexels.com/photos/1939485/pexels-photo-1939485.jpeg?auto=compress&cs=tinysrgb&w=600")` 
+          backgroundImage: `url("https://www.marshallsindia.com/ImageBuckets/ItemImages/ZA%201903.jpg?id=75")` 
           }}>
 
             <Routes>
-              <Route path="/" element={<Register/>} /> //*mean show all events*/
+              <Route path="/" element={<ShowNFT username={usernameInroot}/>} /> //*mean show all events*/
               <Route path="/Eventslist" element={<EventList/>}/>
               <Route path="/Organizationlist" element={<OrganizationList/>}/>
               <Route path="/ShowNFT" element={<ShowNFT username={usernameInroot}/>}/>
@@ -239,9 +246,9 @@ function App() {
   }
   else{
     return (<main class="form-signin w-100 m-auto">
-            <div className="container mt-3 has-bg-img" style={{ 
-        backgroundImage: `url("https://images.pexels.com/photos/1939485/pexels-photo-1939485.jpeg?auto=compress&cs=tinysrgb&w=600")`
-        }}>
+      <div className="container mt-3 has-bg-img" style={{ 
+        backgroundImage: `url("https://www.marshallsindia.com/ImageBuckets/ItemImages/ZA%201903.jpg?id=75")`
+      }}>
     <form>
       <img class="mb-4" src={love_1} alt="" width="100" height="100"/>
       <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
